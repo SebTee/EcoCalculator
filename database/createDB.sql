@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-CREATE TABLE user(
+CREATE TABLE members(
 user_id SERIAL PRIMARY KEY,
 user_name VARCHAR(32) NOT NULL,
 user_password VARCHAR(256) NOT NULL,
@@ -19,7 +19,7 @@ answer_display VARCHAR(16) NOT NULL,
 question_id INT REFERENCES question(question_id)
 );
 
-CREATE TABLE result(
+CREATE TABLE member_answer(
 user_id INT REFERENCES user(user_id),
 question_id INT REFERENCES question(question_id),
 answer_id INT REFERENCES answer(answer_id),
