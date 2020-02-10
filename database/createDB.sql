@@ -1,10 +1,10 @@
 BEGIN TRANSACTION;
 
-CREATE TABLE user(
-user_id SERIAL PRIMARY KEY,
-user_name VARCHAR(32) NOT NULL,
-user_password VARCHAR(256) NOT NULL,
-user_email VARCHAR(345) NOT NULL UNIQUE
+CREATE TABLE account(
+account_id SERIAL PRIMARY KEY,
+account_name VARCHAR(32) NOT NULL,
+account_password VARCHAR(256) NOT NULL,
+account_email VARCHAR(345) NOT NULL UNIQUE
 );
 
 CREATE TABLE question(
@@ -19,11 +19,11 @@ answer_display VARCHAR(16) NOT NULL,
 question_id INT REFERENCES question(question_id)
 );
 
-CREATE TABLE result(
-user_id INT REFERENCES user(user_id),
+CREATE TABLE account_answer(
+account_id INT REFERENCES account(account_id),
 question_id INT REFERENCES question(question_id),
 answer_id INT REFERENCES answer(answer_id),
-PRIMARY KEY(user_id, question_id)
+PRIMARY KEY(account_id, question_id)
 );
 
 END TRANSACTION;
