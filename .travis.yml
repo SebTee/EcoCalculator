@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  -12
+services:
+  - postgresql
+before_script:
+  -psql -f ./database/createDB.sql -U postgres
+script: npm start
