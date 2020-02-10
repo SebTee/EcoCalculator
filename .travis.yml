@@ -4,6 +4,6 @@ node_js:
 services:
   - postgresql
 before_script:
-  psql -c 'create database EcoCalculator;' -U postgres
-  psql -f ./database/createDB.sql -d EcoCalculator -U postgres
+  - psql -c 'create database EcoCalculator;' -U postgres
+  - psql -f ./database/createDB.sql -d EcoCalculator -U postgres
 script: npm start
