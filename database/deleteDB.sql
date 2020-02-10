@@ -1,0 +1,8 @@
+BEGIN TRANSACTION;
+
+DROP TABLE account-answer;
+DROP TABLE answer;
+DROP TABLE question;
+DROP TABLE account;
+
+END TRANSACTION;
