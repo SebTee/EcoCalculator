@@ -1,9 +1,11 @@
+os: linux
+root: false
 language: node_js
 node_js:
   node
 services:
   - postgresql
 before_script:
-  - psql -c 'create database EcoCalculator;' -U postgres
-  - psql -f ./database/createDB.sql -d EcoCalculator -U postgres
+  - psql -c 'create database ecocalculator;' -U postgres
+  - psql -f ./database/createDB.sql -d ecocalculator -U postgres
 script: npm start
