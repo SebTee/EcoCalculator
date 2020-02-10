@@ -8,7 +8,6 @@ services:
 before_script:
   - psql -c 'create database ecocalculator;' -U postgres
   - psql -f ./database/createDB.sql -d ecocalculator -U postgres
-  - ip -c l
 script: npm start
 deploy:
   skip_cleanup: true
