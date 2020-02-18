@@ -22,12 +22,20 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
-    <loaded-nodes />
+    <show-object-properties value="false" />
+    <loaded-nodes>
+      <connection connection-id="7d2cce98-ec44-4be1-893f-88b97e17e545">
+        <schema name="information_schema" object-types="table, view, sequence, function" />
+        <schema name="pg_catalog" object-types="table, view, sequence, function" />
+        <schema name="pg_toast" object-types="table, view, sequence, function" />
+        <schema name="pg_toast_temp_1" object-types="table, view, sequence, function" />
+        <schema name="public" object-types="table, index, constraint, column, view, sequence, function, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7d2cce98-ec44-4be1-893f-88b97e17e545">
-      <console name="EcoCalculator" type="STANDARD" schema="" session="Main" />
+      <console name="EcoCalculator" type="STANDARD" schema="public" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -36,11 +44,15 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="7d2cce98-ec44-4be1-893f-88b97e17e545" />
   </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="7d2cce98-ec44-4be1-893f-88b97e17e545" dataset="public.account_answer" active-filter-id="" />
+  </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/database/createDB.sql" connection-id="" session-id="MAIN" current-schema="" />
+    <mapping file-url="file://$PROJECT_DIR$/database/deleteDB.sql" connection-id="7d2cce98-ec44-4be1-893f-88b97e17e545" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/database/createDB.sql" connection-id="7d2cce98-ec44-4be1-893f-88b97e17e545" session-id="MAIN" current-schema="public" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -58,7 +70,9 @@
     <filters />
   </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
-    <recently-used-interfaces />
+    <recently-used-interfaces>
+      <mapping database-type="POSTGRES" interface-id="DEFAULT" />
+    </recently-used-interfaces>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
@@ -68,17 +82,17 @@
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="10.1" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="5432" />
-          <database value="postgres" />
+          <database value="ecocalculator" />
           <type value="USER_PASSWORD" />
-          <user value="EcoCalculator" />
-          <deprecated-pwd value="" />
+          <user value="ecocalculator" />
+          <deprecated-pwd value="ZWNvY2FsY3VsYXRvcg==" />
         </database>
         <properties>
           <auto-commit value="false" />
