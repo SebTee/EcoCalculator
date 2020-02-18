@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
 const pool = require("../database/dbClient");
+const account = require("../account");
 
-pool.query('SELECT NOW()', (err, result) => {
+pool.query('SELECT * FROM account;', (err, res) => {
 	if (err) {
-		return console.error(err)
+		throw console.error(err)
 	}
-	console.log(result.rows);
+	console.log(res.rows);
 });
 
 pool.end();
