@@ -1,8 +1,72 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*CSS for index.html*/
+
+#heading {
+  color: #3fd923;
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+}
+
+button {
+    display: block;
+    margin: auto;
+    width:200px;
+    font-size: 16px;
+    color:black;
+    background-color: white;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 1px solid;
+    box-shadow: 4px 4px #737373;
+    text-shadow: 0.2px 0.2px 0.2px #000;
+}
+
+button:hover {
+    background-color: #3fd923;
+}
+
+button:active{
+  box-shadow: inset -2px -2px 3px #808080,
+                inset 2px 2px 3px #808080;
+}
+
+footer {
+  padding: 20px;
+}
+
+.logo {
+    padding-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: auto;
+}
+
+/*
+a:active {
+  color: yellow;
+}
+*/
+
+.link:hover {
+  color: #3fd923;
 }
 
 a {
-  color: #00B7FF;
+  color: #00a4e6;
 }
+
+/*CSS for centralization for some items
+display: block;
+margin: auto;
+*/
+
+ /*End of CSS for index.html*/
