@@ -6,11 +6,10 @@ const saltRounds = 10; //recommended number of salt iterations
 const emailRegularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function create(req, res) {
-	const username = req.body.username;
-	const password = req.body.password;
-	const email = req.body.email;
+	const {username, password, email} = req.body;
 	if (username === undefined || password === undefined || email === undefined) {
 		res.status(400).end("");
+		return;
 	}
 	if (validEmail(email)) {
 		const hash = bcrypt.hash(password, saltRounds);
@@ -28,9 +27,29 @@ function create(req, res) {
 	}
 }
 
+function login(req, res) {
+	const {email, password} = req.body;
+	pool.query("SELECT account_id, account_password FROM account WHERE account_email = $1", [email])
+		.then(response => {
+			if (response.rows.length === 1) {
+				if(bcrypt.compareSync(password, response.rows[0].account_password)) { //if the password is correct
+					req.session.sessionName = response.rows[0].account_id;
+					res.status(200).end("")
+				} else {
+					res.status(401).end("incorrect password")
+				}
+			} else {
+				res.status(404).end("account not found")
+			}
+		})
+		.catch(err => res.status(400).end(""))
+}
+
 //returns true if the email passed is a valid email. Returns false otherwise.
 function validEmail(email) {
 	return emailRegularExpression.test(email.toLowerCase())
 }
 
+
 module.exports.create = create;
+module.exports.login = login;
