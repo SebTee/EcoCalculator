@@ -1,13 +1,41 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Express</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>EcoCalculator</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+
+  <header>
+    <h1 id="heading">Welcome to EcoCalculator!</h1>
+    <picture>
+      <img class="logo" alt="EcoCalculator Logo" title="EcoCalculator Logo" src="eco.png">
+    </picture>
+  </header>
+
+  <button
+    onclick="window.location.href = './signIn.html';"
+    type="button">Log in
+  </button>
+
+  <p><button
+    onclick="window.location.href = './createAccount.html';"
+    type="button">Sign Up with Email
+  </button></p>
+
+  <h4><a class = "link" href="./questionnaire.html">Continue as a guest</a></h4>
+
+  <footer id="specificSize">By signing up you agree with
+    <a class="link" href="./TermsOfService.html">Terms of Service</a>
+    and <a class="link" href="./TermsOfService.html">Privacy policy.</a>
+  </footer>
+
 </body>
 
 </html>
