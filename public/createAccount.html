@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <title>EcoCalculator</title>
-  <link rel="stylesheet" href="/EcoCalculator/public/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 
 </head>
 
@@ -19,32 +20,32 @@
   <form>
     <input type="text" id="textbox" name="username" placeholder="Username">
     <p><input type="text" id="textbox" name="email" placeholder="Email"></p>
-    <p><input type="text" id="textbox" name="password" placeholder="Password"><div class="help-tip">
-      <p>This is the inline help tip! It can contain all kinds of HTML. Style it as you please.</p>
-    </div></p>
+    <input type="text" id="textbox" name="password" placeholder="Password"><div class="help-tip">
+      <p>The password should be a minimum length of 8 or more characters. It should include lowercase, uppercase alphabetic characters and numbers.</p>
+    </div>
 
-    <input type="text" id="textbox" name="re-enterP" placeholder="Re-enter Password">
+    <p><input type="text" id="textbox" name="re-enterP" placeholder="Re-enter Password"></p>
   </form>
 
 <div id="specificSize">
   <input class="checkbox" type="checkbox" checked="checked">
-  <label>I agree to the <a class = "link" href="http://localhost:63342/EcoCalculator/public/questionnaire.html?_ijt=bf5dtp5obklfn1nv8qs68m9ck9">Terms and Conditions.</a></label>
+  <label>I agree to the <a class = "link" href='./TermsOfService.html'>Terms and Conditions.</a></label>
 </div>
 
   <button
-    class = "specialButton" onclick="window.location.href = 'http://localhost:63342/EcoCalculator/public/signIn.html?_ijt=68s9u32dljkqtaeki6hshboa3u';"
+    class = "greenButton" onclick="window.location.href = './questionnaire.html';"
     type="button">Sign up
   </button>
 
   <footer>
 
     <p><button
-      onclick="window.location.href = 'http://localhost:63342/EcoCalculator/public/signIn.html?_ijt=68s9u32dljkqtaeki6hshboa3u';"
+      onclick="window.location.href = './questionnaire.html';"
       type="button">Continue as a guest
     </button></p>
 
     <button
-      onclick="window.location.href = 'http://localhost:63342/EcoCalculator/public/signIn.html?_ijt=68s9u32dljkqtaeki6hshboa3u';"
+      onclick="window.location.href = './signIn.html';"
       type="button">Already have an account?
     </button>
 
