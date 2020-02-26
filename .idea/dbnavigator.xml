@@ -23,15 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="7d2cce98-ec44-4be1-893f-88b97e17e545">
-        <schema name="information_schema" object-types="table, view, sequence, function" />
-        <schema name="pg_catalog" object-types="table, view, sequence, function" />
-        <schema name="pg_toast" object-types="table, view, sequence, function" />
-        <schema name="pg_toast_temp_1" object-types="table, view, sequence, function" />
-        <schema name="public" object-types="table, index, constraint, column, view, sequence, function, dataset trigger" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7d2cce98-ec44-4be1-893f-88b97e17e545">
@@ -82,7 +74,7 @@
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="10.1" />
+          <database-version value="10.12" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
