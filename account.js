@@ -12,7 +12,7 @@ function create(req, res) {
 		return;
 	}
 	if (validEmail(email)) {
-		const hash = bcrypt.hash(password, saltRounds);
+		const hash = bcrypt.hashSync(password, saltRounds);
 		pool.query("INSERT INTO account (account_name, account_password, account_email) VALUES ($1, $2, $3)", [username, hash, email])
 			.then(response => res.status(201).end(""))
 			.catch(err => {
