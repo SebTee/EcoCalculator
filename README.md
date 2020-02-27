@@ -3,7 +3,7 @@ Want to reduce your carbon footprint? find out how!
 
 [Test Server](https://sebtee.com/eco/)
 
-###Legend
+### Legend
 
 * [AhmadKhuzaei](https://github.com/AhmadKhuzaei) - Ahmad Al-khuzaei (up879591)
 
