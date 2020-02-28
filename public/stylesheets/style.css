@@ -95,9 +95,21 @@ input:hover {
   color:black;
   background-color: white;
   box-shadow: 4px 4px #737373;
-  text-shadow: 0.2px 0.2px 0.2px #000;
+  /*text-shadow: 0.2px 0.2px 0.2px #000;*/
   border: 2px solid;
 }
+
+#backButton {
+    /*position: relative;*/
+    /*padding: 8px 16px;*/
+    border: 0;
+    width:50px;
+    font-size: 16px;
+    box-shadow: 0 0;
+    background-color: transparent;
+}
+
+
 
 .greenButton{
   color:white;
@@ -115,7 +127,7 @@ button {
     padding-bottom: 5px;
     padding-top: 5px;
     box-shadow: 4px 4px #737373;
-    text-shadow: 0.2px 0.2px 0.2px #000;
+    /*text-shadow: 0.2px 0.2px 0.2px #000;*/
     border: 2px solid;
 }
 

@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sign In</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 <body>
+    <header>
+        <h1 id="heading2">Sign In</h1>
+    </header>
+
+    <form>
+        <input type="text" class="textbox" name="username" placeholder="Username">
+        <p></p><input type="text" class="textbox" name="password" placeholder="Password"></p>
+    </form>
+
+    <button
+            class = "greenButton" onclick="window.location.href = './questionnaire.html';"
+            type="button">Log In
+    </button>
+    <p><button
+            onclick="window.location.href = './createAccount.html';"
+            type="button">Need an Account?
+    </button></p>
 
 </body>
 </html>
