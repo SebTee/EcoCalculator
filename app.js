@@ -14,7 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({'secret': 'w&W!wJ$ME@YgKg^3TF#HpTmNBOwU3M8XbFivkC*HuKrMZsjbUnT#YsiVKXG6ugjr'}));
+app.use(session({
+	'secret': 'w&W!wJ$ME@YgKg^3TF#HpTmNBOwU3M8XbFivkC*HuKrMZsjbUnT#YsiVKXG6ugjr',
+	'resave': false,
+	'saveUninitialized': false
+}));
 
 app.use('/', indexRouter);
 app.use('/api/v1', apiRouter);
