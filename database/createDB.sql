@@ -100,6 +100,7 @@ INSERT INTO answer (question_id, answer_display, answer_value) VALUES (12, 'No',
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (12, 'Yes', 0);
 
 GRANT ALL ON ALL TABLES IN SCHEMA public TO ecocalculator;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ecocalculator;
 GRANT ALL ON SCHEMA public TO ecocalculator;
 
 END TRANSACTION;
