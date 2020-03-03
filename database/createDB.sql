@@ -16,13 +16,15 @@ CREATE TABLE answer(
 answer_id SERIAL PRIMARY KEY,
 answer_value INT NOT NULL,
 answer_display VARCHAR(64) NOT NULL,
-question_id INT REFERENCES question(question_id)
+question_id INT REFERENCES question(question_id) NOT NULL,
+unique (answer_value, question_id),
+unique (answer_display, question_id)
 );
 
 CREATE TABLE account_answer(
 account_id INT REFERENCES account(account_id),
 question_id INT REFERENCES question(question_id),
-answer_id INT REFERENCES answer(answer_id),
+answer_id INT REFERENCES answer(answer_id) NOT NULL,
 PRIMARY KEY(account_id, question_id)
 );
 
@@ -44,7 +46,6 @@ INSERT INTO answer (question_id, answer_display, answer_value) VALUES (2, 'I liv
 INSERT INTO question (question_id, question) VALUES (3, 'What option best describes your eating habbits?');
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (3, 'I eat meat on every day', 10);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (3, 'I eat meat a few times a week', 8);
-INSERT INTO answer (question_id, answer_display, answer_value) VALUES (3, 'I''m vegatarian', 8);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (3, 'I''m vegatarian', 4);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (3, 'I''m vegan', 2);
 
@@ -63,7 +64,6 @@ INSERT INTO answer (question_id, answer_display, answer_value) VALUES (5, 'I don
 INSERT INTO question (question_id, question) VALUES (6, 'What distance do you travel by private car per week?');
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (6, 'More than 285 miles (15,000 miles per year)', 12);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (6, 'Between 190 and 285 miles (10,000 to 15,000 miles per year)', 10);
-INSERT INTO answer (question_id, answer_display, answer_value) VALUES (6, 'Between 20 and 190 miles (1,000 to 10,000 miles per year)', 8);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (6, 'Between 20 and 190 miles (1,000 to 10,000 miles per year)', 6);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (6, 'Less than 20 miles (Less than 1,000 miles per year)', 4);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (6, 'I do not travel by private car', 0);
@@ -71,8 +71,7 @@ INSERT INTO answer (question_id, answer_display, answer_value) VALUES (6, 'I do 
 INSERT INTO question (question_id, question) VALUES (7, 'What distance do you travel by public transport per week?');
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'More than 385 miles (20,000 miles per year)', 12);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'Between 285 and 385 miles (15,000 to 20,000 miles per year)', 10);
-INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'Between 190 and 285 miles (10,000 to 15,000 miles per year)', 8);
-INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'Between 20 and 190 miles (1,000 to 10,000 miles per year)', 6);
+INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'Between 190 and 285 miles (10,000 to 15,000 miles per year)', 6);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'Between 20 and 190 miles (1,000 to 10,000 miles per year)', 4);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'Less than 20 miles (Less than 1,000 miles per year)', 2);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (7, 'I do not travel by public transport', 0);
@@ -99,5 +98,8 @@ INSERT INTO answer (question_id, answer_display, answer_value) VALUES (11, 'Yes'
 INSERT INTO question (question_id, question) VALUES (12, 'Do you recycle food waste? (e.g. composte)');
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (12, 'No', 4);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (12, 'Yes', 0);
+
+GRANT ALL ON ALL TABLES IN SCHEMA public TO ecocalculator;
+GRANT ALL ON SCHEMA public TO ecocalculator;
 
 END TRANSACTION;
