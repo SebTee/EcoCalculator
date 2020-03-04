@@ -20,6 +20,32 @@ async function storeResults(accountId, answers) {
 	}
 }
 
+function getResults(req, res) {
+	if (Number.isInteger(req.session.sessionName)) { //checks is user logged in
+		pool.query('SELECT question_id, answer_id FROM account_answer WHERE $1', [req.session.sessionName])
+			.then(response => {
+				if (response.rows.length > 0) {
+					const answers = [];
+					for (let i = 0; i < response.rows.length; i++) {
+						answers.push({
+							"questionId": response.rows[i].question_id,
+							"answerId": response.rows[i].answer_id
+						})
+					}
+					generateResults(answers)
+						.then(result => res.status(200).send(result))
+						.catch(err => res.status(500).send(''))
+				}
+				else {
+					res.status(404).send('The user has not yet answered the questions.');
+				}
+			})
+			.catch(err => res.status(500).send(''));
+	} else {
+		res.status(401).send('');
+	}
+}
+
 function submit(req, res) {
 	isBodyValid(req.body.answers).then(valid => {
 		if (valid !== undefined) {
@@ -84,3 +110,4 @@ async function generateResults(answers) {
 }
 
 module.exports.submit = submit;
+module.exports.getResult = getResults;

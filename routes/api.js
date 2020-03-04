@@ -21,4 +21,8 @@ router.post('/question', (req, res, next) => {
   result.submit(req, res);
 });
 
+router.get('/result', (req, res, next) => {
+  result.getResult(req, res);
+});
+
 module.exports = router;
