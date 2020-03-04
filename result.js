@@ -1,8 +1,23 @@
 const pool = require("./database/dbClient");
 const getQuestionsAsJson = require("./question").getJson;
 
-function storeResults(accountId, answers) {
-	console.log(accountId, answers);
+async function storeResults(accountId, answers) {
+	const client = await pool.connect();
+	try {
+		await client.query('BEGIN;');
+		await client.query('DELETE FROM account_answer WHERE account_id = $1', [accountId]);
+		for (let answerIndex = 0; answerIndex < answers.length; answerIndex++) {
+			await client.query('INSERT INTO account_answer (account_id, question_id, answer_id) VALUES ($1, $2, $3)', [accountId, answers[answerIndex].questionId, answers[answerIndex].answerId]);
+		}
+		await client.query('COMMIT;');
+	}
+	catch (err) {
+		await client.query('ROLLBACK;');
+		error = err;
+	}
+	finally {
+		client.release();
+	}
 }
 
 function submit(req, res) {
