@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="./js/accounts.js"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sign In</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 <body>
+    <header>
+        <h1 id="heading2">Sign In</h1>
+    </header>
+
+    <form>
+        <input id="email" type="text" class="textbox" name="email" placeholder="Email">
+        <p></p><input id="password" type="text" class="textbox" name="password" placeholder="Password"></p>
+    </form>
+
+    <button
+            class = "greenButton" onclick="login();"
+            type="button">Log In
+    </button>
+    <p><button
+            onclick="window.location.href = './createAccount.html';"
+            type="button">Need an Account?
+    </button></p>
 
 </body>
 </html>
