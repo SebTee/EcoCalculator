@@ -29,6 +29,14 @@ PRIMARY KEY(account_id, question_id),
 UNIQUE (account_id, answer_id)
 );
 
+CREATE TABLE polluting_event(
+polluting_event_id SERIAL PRIMARY KEY,
+polluting_event_name VARCHAR(32) NOT NULL,
+polluting_event_start_date TIMESTAMP NOT NULL,
+polluting_event_end_date TIMESTAMP NOT NULL,
+account_id INT NOT NULL
+);
+
 INSERT INTO question (question_id, question) VALUES (1, 'How many people live with you?');
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (1, 'I live by myself', 14);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (1, 'I live with one other person', 12);
