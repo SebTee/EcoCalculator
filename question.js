@@ -11,36 +11,32 @@ function getQuestions(req, res) {
 		})
 }
 
-function formatResponseJson(rows) {
+async function getQuestionsAsJson() {
+	const response = await pool.query('SELECT q.question_id, q.question, a.answer_id, a.answer_display, a.answer_value FROM answer a LEFT JOIN question q ON a.question_id = q.question_id ORDER BY q.question_id, a.answer_value DESC;');
 	let currentQuestion = {
 		"questionId": undefined,
 		"question": "",
 		"answers": []
 	};
 	let jsonResponse = {"questions": []};
-	for (let i = 0; i < rows.length; i++) {
-		if (currentQuestion.questionId !== rows[i].question_id) {
+	for (let i = 0; i < response.rows.length; i++) {
+		if (currentQuestion.questionId !== response.rows[i].question_id) {
 			if (i !== 0) { //ignores adding the current question object in the first round
 				jsonResponse.questions.push(currentQuestion)
 			}
 			currentQuestion = {
-				"questionId": rows[i].question_id,
-				"question": rows[i].question,
+				"questionId": response.rows[i].question_id,
+				"question": response.rows[i].question,
 				"answers":[]
 			}
 		}
 		currentQuestion.answers.push({
-			"answerId": rows[i].answer_id,
-			"answer": rows[i].answer_display,
-			"value": rows[i].answer_value
+			"answerId": response.rows[i].answer_id,
+			"answer": response.rows[i].answer_display,
+			"value": response.rows[i].answer_value
 		})
 	}
 	return jsonResponse;
-}
-
-async function getQuestionsAsJson() {
-	const response = await pool.query('SELECT q.question_id, q.question, a.answer_id, a.answer_display, a.answer_value FROM answer a LEFT JOIN question q ON a.question_id = q.question_id ORDER BY q.question_id, a.answer_value DESC;');
-	return formatResponseJson(response.rows);
 }
 
 module.exports.get = getQuestions;
