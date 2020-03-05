@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Questionnaire</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <ul id="navbar-nav">
+                <li><button id="backButton"
+                            onclick="window.location.href = './index.html';"
+                            type="button"> <
+                </button></li>
+                <li>
+                    <h1 id="heading2">Questionnaire</h1>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="questionsContainer">
+        <div class="question">
+            <h1 class="questionNumber">1. </h1>
+            <p class="questionText">Question goes here</p>
+           <form class="answers">
+               <input type="radio" id="q1a1" value="male">
+               <label for="q1a1">Answer 1</label><br>
+               <input type="radio" id="q1a2" value="male">
+               <label for="q1a2">Answer 2</label><br>
+               <input type="radio" id="q1a3" value="male">
+               <label for="q1a3">Answer 3</label><br>
+           </form>
 
+        </div>
+    </div>
 </body>
 </html>
