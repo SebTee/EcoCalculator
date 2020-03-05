@@ -50,6 +50,20 @@ function validEmail(email) {
 	return emailRegularExpression.test(email.toLowerCase())
 }
 
+function isLoggedIn(req) {
+	if (Number.isInteger(req.session.sessionName)) {
+		return pool.query("SELECT account_id FROM account WHERE account_id = $1", [req.session.sessionName])
+			.then(response => {
+				return response.rows.length === 1
+			})
+			.catch(err => {
+				return false;
+			});
+	}
+	return false;
+}
+
 
 module.exports.create = create;
 module.exports.login = login;
+module.exports.isLoggedIn = isLoggedIn;

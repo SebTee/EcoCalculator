@@ -1,8 +1,10 @@
 const pool = require("./database/dbClient");
 const getQuestionsAsJson = require("./question").getJson;
+const isLoggedIn = require("./account").isLoggedIn;
 
 async function storeResults(accountId, answers) {
 	const client = await pool.connect();
+	let error = undefined;
 	try {
 		await client.query('BEGIN;');
 		await client.query('DELETE FROM account_answer WHERE account_id = $1', [accountId]);
@@ -18,10 +20,11 @@ async function storeResults(accountId, answers) {
 	finally {
 		client.release();
 	}
+	if (error !== undefined) throw error;
 }
 
 function getResults(req, res) {
-	if (Number.isInteger(req.session.sessionName)) { //checks is user logged in
+	if (isLoggedIn(req)) { //checks is user logged in
 		pool.query('SELECT question_id, answer_id FROM account_answer WHERE $1', [req.session.sessionName])
 			.then(response => {
 				if (response.rows.length > 0) {
@@ -50,7 +53,7 @@ function submit(req, res) {
 	isBodyValid(req.body.answers).then(valid => {
 		if (valid !== undefined) {
 			if (valid) {
-				if (Number.isInteger(req.session.sessionName)) {
+				if (isLoggedIn(req)) {
 					storeResults(req.session.sessionName, req.body.answers);
 				}
 				generateResults(req.body.answers)
