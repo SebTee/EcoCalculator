@@ -28,4 +28,22 @@ function addEvent(req, res) {
 	}
 }
 
+function getEvents(req, res) {
+	if (isLoggedIn(req)) {
+		pool.query('SELECT polluting_event_id AS id, polluting_event_name AS name, polluting_event_start_date AS start, polluting_event_end_date AS end FROM polluting_event WHERE account_id = $1', [req.session.sessionName])
+			.then(response => {
+				res.status(200).send({
+					"events": response.rows
+				})
+			})
+			.catch(err => {
+				res.status(500).send('');
+			})
+	}
+	else {
+		res.status(401).send('');
+	}
+}
+
 module.exports.addEvent = addEvent;
+module.exports.getEvents = getEvents;

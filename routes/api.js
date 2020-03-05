@@ -30,4 +30,8 @@ router.post('/event', (req, res, next) => {
   event.addEvent(req, res);
 });
 
+router.get('/event', (req, res, next) => {
+  event.getEvents(req, res);
+});
+
 module.exports = router;
