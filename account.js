@@ -13,7 +13,7 @@ const emailRegularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"
  * <p>201 response if user is successfully created an account.</p>
  * <p>400 response if the body is invalid.</p>
  * <p>409 response if the email address is already used for an account.</p>
- * <p>500 response If an unknown error occurs.</p>
+ * <p>500 response if an unknown error occurs.</p>
  * @param {object} req API request object
  * @param {object} res API response object
  */
@@ -42,7 +42,7 @@ function create(req, res) {
 /**
  * <p>Handles the login API call.</p>
  * <p>200 response if user is successfully logged in.</p>
- * <p>400 if the body is invalid.</p>
+ * <p>400 response if the body is invalid.</p>
  * <p>401 response if the password is incorrect.</p>
  * <p>404 response if the email address supplied in the request does not correspond with.</p>
  * @param {object} req API request object
