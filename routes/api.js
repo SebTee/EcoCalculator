@@ -3,6 +3,7 @@ const router = express.Router();
 const account = require('../account');
 const question = require('../question');
 const result = require('../result');
+const event = require('../event');
 
 /* GET users listing. */
 router.post('/account/create', (req, res, next) => {
@@ -23,6 +24,10 @@ router.post('/question', (req, res, next) => {
 
 router.get('/result', (req, res, next) => {
   result.getResult(req, res);
+});
+
+router.post('/event', (req, res, next) => {
+  event.addEvent(req, res);
 });
 
 module.exports = router;
