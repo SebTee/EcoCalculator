@@ -5,7 +5,6 @@ const question = require('../question');
 const result = require('../result');
 const event = require('../event');
 
-/* GET users listing. */
 router.post('/account/create', (req, res, next) => {
   account.create(req, res);
 });
