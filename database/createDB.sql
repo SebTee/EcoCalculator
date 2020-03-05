@@ -17,15 +17,16 @@ answer_id SERIAL PRIMARY KEY,
 answer_value INT NOT NULL,
 answer_display VARCHAR(64) NOT NULL,
 question_id INT REFERENCES question(question_id) NOT NULL,
-unique (answer_value, question_id),
-unique (answer_display, question_id)
+UNIQUE (answer_value, question_id),
+UNIQUE (answer_display, question_id)
 );
 
 CREATE TABLE account_answer(
 account_id INT REFERENCES account(account_id),
 question_id INT REFERENCES question(question_id),
 answer_id INT REFERENCES answer(answer_id) NOT NULL,
-PRIMARY KEY(account_id, question_id)
+PRIMARY KEY(account_id, question_id),
+UNIQUE (account_id, answer_id)
 );
 
 INSERT INTO question (question_id, question) VALUES (1, 'How many people live with you?');

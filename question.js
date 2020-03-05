@@ -1,11 +1,14 @@
 const pool = require("./database/dbClient");
 
 function getQuestions(req, res) {
-	pool.query('SELECT q.question_id, q.question, a.answer_id, a.answer_display, a.answer_value FROM answer a LEFT JOIN question q ON a.question_id = q.question_id ORDER BY q.question_id, a.answer_value DESC;')
-		.then(response => {
-			res.status(200).send(formatResponseJson(response.rows))
+	getQuestionsAsJson()
+		.then(jsonResponse => {
+			if (jsonResponse === undefined) {
+				res.status(500).send();
+			} else {
+				res.status(200).send(jsonResponse);
+			}
 		})
-		.catch(err => res.status(500).send())
 }
 
 function formatResponseJson(rows) {
@@ -35,4 +38,10 @@ function formatResponseJson(rows) {
 	return jsonResponse;
 }
 
+async function getQuestionsAsJson() {
+	const response = await pool.query('SELECT q.question_id, q.question, a.answer_id, a.answer_display, a.answer_value FROM answer a LEFT JOIN question q ON a.question_id = q.question_id ORDER BY q.question_id, a.answer_value DESC;');
+	return formatResponseJson(response.rows);
+}
+
 module.exports.get = getQuestions;
+module.exports.getJson = getQuestionsAsJson;
