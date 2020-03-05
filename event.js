@@ -45,5 +45,28 @@ function getEvents(req, res) {
 	}
 }
 
+function deleteEvent(req, res) {
+	if (isLoggedIn(req)) {
+		pool.query('DELETE FROM polluting_event WHERE account_id = $1 AND polluting_event_id = $2', [req.session.sessionName, Number(req.query.id)])
+			.then(response => {
+				if (response.rowCount === 1) {
+					res.status(200).send('');
+				} else if (response.rowCount === 0) {
+					res.status(404).send('');
+				}
+				else {
+					res.status(500).send('');
+				}
+			})
+			.catch(err => {
+				res.status(400).send('');
+			})
+	}
+	else {
+		res.status(401).send('');
+	}
+}
+
 module.exports.addEvent = addEvent;
 module.exports.getEvents = getEvents;
+module.exports.deleteEvent = deleteEvent;

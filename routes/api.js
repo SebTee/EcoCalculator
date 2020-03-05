@@ -34,4 +34,8 @@ router.get('/event', (req, res, next) => {
   event.getEvents(req, res);
 });
 
+router.delete('/event', (req, res, next) => {
+  event.deleteEvent(req, res);
+});
+
 module.exports = router;
