@@ -73,5 +73,10 @@ body {
     border-radius: 10px;
 }
 
+#dayEvents{
+    background-color: white;
+    height: 200px;
+}
+
 
 
