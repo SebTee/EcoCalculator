@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-        <link rel="stylesheet" href="./stylesheets/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/events.css">
+    <script>
+        function updateDates(){
 
+            n =  new Date();
+
+            let months = ['January','February','March','April','May','June','July','August','September','October',
+                            'November','December'];
+
+            let monthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct', 'Nov','Dec'];
+
+            let days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+            const monthName = months[n.getMonth()];
+            const monthShort = monthsShort[n.getMonth()];
+            const dayName = days[n.getDate()];
+            const day = n.getDay() + 1;
+
+            document.getElementById("month").innerHTML = monthName;
+            document.getElementById("date").innerHTML = "Today - " + dayName + " " + monthShort + " " + day;
+            document.getElementById(days[day]).className += ' today';
+            }
+
+    </script>
+</head>
+<body onload="updateDates()">
+<header>
+    <nav class="navbar">
+        <ul id="navbar-nav">
+            <li><button id="backButton"
+                        onclick="window.location.href = './index.html';"
+                        type="button"> <
+            </button></li>
+            <li>
+                <h1 id="heading2">Events</h1>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div id="taskContainer">
+    <div id="toprow">
+        <p id="month"></p>
+        <div id="addRemove">
+            <button class="buttons">+</button>
+            <button class="buttons">-</button>
+        </div>
+    </div>
+    <div id="days">
+        <ul class="dayText">
+            <li id="Sun">S</li>
+            <li id="Mon">M</li>
+            <li id="Tue">T</li>
+            <li id="Wed">W</li>
+            <li id="Thu">T</li>
+            <li id="Fri">F</li>
+            <li id="Sat">S</li>
+        </ul>
+        <ul class="dayText" id="dayNumber">
+
+        </ul>
+    </div>
+    <p id="date"></p>
+    <div id="dayEvents">
+        Activites will be loaded here from db query, new events will be posted to db
+    </div>
+</div>
 </body>
 </html>
