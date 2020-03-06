@@ -99,42 +99,14 @@ input:hover {
   border: 2px solid;
 }
 
-#headerButton:hover {
-    background-color: #3fd923;
-}
-
-#headerButton:active{
-  box-shadow: inset -2px -2px 3px #808080,
-                inset 2px 2px 3px #808080;
-}
-
 #backButton {
     /*position: relative;*/
     /*padding: 8px 16px;*/
-    font-weight: 900;
     border: 0;
     width:50px;
     font-size: 16px;
     box-shadow: 0 0;
     background-color: transparent;
-}
-
-#backButton:hover {
-    background-color: #3fd923;
-}
-
-#backButton:active{
-  box-shadow: inset -2px -2px 3px #808080,
-                inset 2px 2px 3px #808080;
-}
-
-button:hover {
-    background-color: #3fd923;
-}
-
-button:active{
-  box-shadow: inset -2px -2px 3px #808080,
-                inset 2px 2px 3px #808080;
 }
 
 .greenButton{
@@ -285,6 +257,10 @@ a {
 
 /*CSS for results.html*/
 
+.bold{
+  font-weight: 900;
+}
+
 .center{
   text-align:center;
 }
@@ -417,3 +393,8 @@ body {
     margin: 0 7px;
   }
 */
+
+/* QUESTIONS LAYOUT */
+.questions {
+    position: absolute;
+}
