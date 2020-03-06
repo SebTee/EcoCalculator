@@ -1,6 +1,15 @@
 const pool = require("./database/dbClient");
 const isLoggedIn = require("./account").isLoggedIn;
 
+/**
+ * <p>Handles the get questions API call.</p>
+ * <p>201 response if the event is successfully added to the database.</p>
+ * <p>400 response if the request body is in an invalid format. End is before start if the end date is before the start date.</p>
+ * <p>401 response if the user is not logged in.</p>
+ * <p>500 response if an unknown error occurs.</p>
+ * @param {object} req API request object
+ * @param {object} res API response object
+ */
 function addEvent(req, res) {
 	if (isLoggedIn(req)) {
 		if (!isNaN(Date.parse(req.body.start)) && !isNaN(Date.parse(req.body.start)) && req.body.name !== undefined) {
@@ -28,6 +37,14 @@ function addEvent(req, res) {
 	}
 }
 
+/**
+ * <p>Handles the get questions API call.</p>
+ * <p>200 response with the list of events the user has saved in the database</p>
+ * <p>401 response if the user is not logged in.</p>
+ * <p>500 response if an unknown error occurs.</p>
+ * @param {object} req API request object
+ * @param {object} res API response object
+ */
 function getEvents(req, res) {
 	if (isLoggedIn(req)) {
 		pool.query('SELECT polluting_event_id AS id, polluting_event_name AS name, polluting_event_start_date AS start, polluting_event_end_date AS end FROM polluting_event WHERE account_id = $1', [req.session.sessionName])
@@ -45,6 +62,16 @@ function getEvents(req, res) {
 	}
 }
 
+/**
+ * <p>Handles the get questions API call.</p>
+ * <p>200 response if the event is successfully deleted from the database.</p>
+ * <p>400 response if the request query is in an invalid format</p>
+ * <p>404 response if the supplied event ID does not correspond with an event associated with the logged in user.</p>
+ * <p>401 response if the user is not logged in.</p>
+ * <p>500 response if an unknown error occurs.</p>
+ * @param {object} req API request object
+ * @param {object} res API response object
+ */
 function deleteEvent(req, res) {
 	if (isLoggedIn(req)) {
 		pool.query('DELETE FROM polluting_event WHERE account_id = $1 AND polluting_event_id = $2', [req.session.sessionName, Number(req.query.id)])

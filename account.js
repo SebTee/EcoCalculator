@@ -2,9 +2,21 @@ const pool = require("./database/dbClient");
 const bcrypt = require("bcrypt");
 const saltRounds = 10; //recommended number of salt iterations
 
-//Define the email regular expression
+/**
+ * Used to check if a string is a valid email address.
+ * @type {RegExp}
+ */
 const emailRegularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+/**
+ * <p>Handles the create account API call.</p>
+ * <p>201 response if user is successfully created an account.</p>
+ * <p>400 response if the body is invalid.</p>
+ * <p>409 response if the email address is already used for an account.</p>
+ * <p>500 response if an unknown error occurs.</p>
+ * @param {object} req API request object
+ * @param {object} res API response object
+ */
 function create(req, res) {
 	const {username, password, email} = req.body;
 	if (username === undefined || password === undefined || email === undefined) {
@@ -27,6 +39,15 @@ function create(req, res) {
 	}
 }
 
+/**
+ * <p>Handles the login API call.</p>
+ * <p>200 response if user is successfully logged in.</p>
+ * <p>400 response if the body is invalid.</p>
+ * <p>401 response if the password is incorrect.</p>
+ * <p>404 response if the email address supplied in the request does not correspond with.</p>
+ * @param {object} req API request object
+ * @param {object} res API response object
+ */
 function login(req, res) {
 	const {email, password} = req.body;
 	pool.query("SELECT account_id, account_password FROM account WHERE account_email = $1", [email])
@@ -45,11 +66,20 @@ function login(req, res) {
 		.catch(err => res.status(400).end(""))
 }
 
-//returns true if the email passed is a valid email. Returns false otherwise.
+/**
+ * Checks if an email address is valid.
+ * @param {string} email possible email address
+ * @returns {boolean} True if email is valid otherwise is false.
+ */
 function validEmail(email) {
 	return emailRegularExpression.test(email.toLowerCase())
 }
 
+/**
+ * Checks to see if a user is logged in.
+ * @param {object} req API request object
+ * @returns {boolean} True if the user is logged in otherwise is false
+ */
 function isLoggedIn(req) {
 	if (Number.isInteger(req.session.sessionName)) {
 		return pool.query("SELECT account_id FROM account WHERE account_id = $1", [req.session.sessionName])

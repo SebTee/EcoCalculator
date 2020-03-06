@@ -3,6 +3,13 @@ Want to reduce your carbon footprint? find out how!
 
 [Test Server](https://sebtee.com/eco/)
 
+## Documentation
+
+generate documentation command to run in project root file
+```bash
+jsdoc -c ./jsDocConf.json *
+```
+
 ### Legend
 
 * [AhmadKhuzaei](https://github.com/AhmadKhuzaei) - Ahmad Al-khuzaei (up879591)
