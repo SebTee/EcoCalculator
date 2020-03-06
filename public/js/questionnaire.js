@@ -1,14 +1,38 @@
-getQuestionnaire();
+getQuestions();
 
-console.log("test");
-
-function getQuestionnaire(){
-    fetch('/api/v1/question/getQuestions')
+function getQuestions() {
+    fetch('/api/v1/question')
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-};
+        .then((data) => {
+            console.log(data);
+            let output = '';
+            let questionNumber = 1;
+            data.questions.forEach(questions => {
 
+                output += `<p class='question'>${questionNumber}.  ${questions.question}</p>`;
+                let answerNum = 0;
 
+                questions.answers.forEach(function(answers,i){
 
-// Getting 404 error when trying to use the getQuestions method in question.js, also getting errors with login and signup which I didnt before
+                    if(answerNum === 0){
+                        output += `<select id='${questionNumber}'>`;
+                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
+                        answerNum ++;
+                    }else if(answerNum == questions.answers.length - 1) {
+                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
+                        output += `</select>`
+                        answerNum ++;
+                    }else{
+                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
+                        answerNum ++;
+                    }
+
+                })
+
+                questionNumber++;
+
+            });
+            document.getElementById('test1').innerHTML = output;
+
+        })
+}
