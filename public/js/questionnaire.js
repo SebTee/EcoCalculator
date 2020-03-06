@@ -4,35 +4,45 @@ function getQuestions() {
     fetch('/api/v1/question')
         .then(res => res.json())
         .then((data) => {
-            console.log(data);
+
+// output will contain all questions./answers fetched from db
+
             let output = '';
-            let questionNumber = 1;
+
+            //question number incremented after each loop (eg. 1,2,3. starts at q1)
+            let questionNumber = 1
+
+            //inital loop to go through each question
             data.questions.forEach(questions => {
 
+                // output is always  added too, never overwritten
                 output += `<p class='question'>${questionNumber}.  ${questions.question}</p>`;
-                let answerNum = 0;
 
-                questions.answers.forEach(function(answers,i){
+                //nested loop to go through answers for each question
 
-                    if(answerNum === 0){
-                        output += `<select id='${questionNumber}'>`;
-                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
-                        answerNum ++;
-                    }else if(answerNum == questions.answers.length - 1) {
+                questions.answers.forEach(function (answers, i) {
+
+                    if (i === 0) {
+                        //first answer will open the drop down tag and add first answer
+                        output += `<select id='${questionNumber}' class='selectBox'>`;
+                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`
+
+                    } else if (i == questions.answers.length - 1) {
+                        //last answer value will insert last answer and end dropdown
                         output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
                         output += `</select>`
-                        answerNum ++;
-                    }else{
-                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
-                        answerNum ++;
-                    }
 
+                    } else {
+                        //else the answer value is inserted into the drop down normally
+                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
+
+                    }
                 })
 
                 questionNumber++;
 
             });
-            document.getElementById('test1').innerHTML = output;
+            document.getElementById('dbQuestions').innerHTML = output;
 
         })
 }

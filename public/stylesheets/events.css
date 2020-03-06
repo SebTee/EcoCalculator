@@ -68,15 +68,45 @@ body {
     /*background-color: dodgerblue;*/
 }
 
-.today{
+.today {
     background-color: lightgreen;
     border-radius: 10px;
 }
 
-#dayEvents{
+#dayEvents {
     background-color: white;
     height: 200px;
 }
 
+#eventForm {
+    position: absolute;
+    margin-left: 10%;
+    background-color: grey;
+    width: 40%;
+    height: auto;
+    display: none;
+}
+
+.close {
+    float: right;
+    width: 10%;
+    box-shadow: 0 0;
+    background-color: red;
+    border: black;
+}
+
+#addEvent {
+    width: 30%;
+    margin-left: 35%;
+    box-shadow: 0 0;
+    margin-bottom: 20px;
+}
+
+label, select {
+    display: block;
+    padding: 5px;
+    margin-left: 10%;
+    margin-top: 10px;
+}
 
 

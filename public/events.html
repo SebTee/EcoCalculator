@@ -5,38 +5,19 @@
     <title>Title</title>
     <link rel="stylesheet" href="./stylesheets/style.css">
     <link rel="stylesheet" href="./stylesheets/events.css">
-    <script>
-        function updateDates(){
+    <script src="./js/events.js"></script>
 
-            n =  new Date();
-
-            let months = ['January','February','March','April','May','June','July','August','September','October',
-                            'November','December'];
-
-            let monthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct', 'Nov','Dec'];
-
-            let days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-
-            const monthName = months[n.getMonth()];
-            const monthShort = monthsShort[n.getMonth()];
-            const dayName = days[n.getDate()];
-            const day = n.getDay() + 1;
-
-            document.getElementById("month").innerHTML = monthName;
-            document.getElementById("date").innerHTML = "Today - " + dayName + " " + monthShort + " " + day;
-            document.getElementById(days[day]).className += ' today';
-            }
-
-    </script>
 </head>
-<body onload="updateDates()">
+<body onload="update()" onload="getEvents()">
 <header>
     <nav class="navbar">
         <ul id="navbar-nav">
-            <li><button id="backButton"
+            <li>
+                <button id="backButton"
                         onclick="window.location.href = './index.html';"
                         type="button"> <
-            </button></li>
+                </button>
+            </li>
             <li>
                 <h1 id="heading2">Events</h1>
             </li>
@@ -44,11 +25,33 @@
     </nav>
 </header>
 <div id="taskContainer">
+    <div id="eventForm">
+        <button class="close" onclick="hideForm()">X</button>
+
+        <div id="eventDetails">
+            <label>Select polluting event:</label>
+            <select id="eventSelect">
+                <option>Car Journey</option>
+                <option>Plane Journey</option>
+            </select>
+            <label>Select start date:</label>
+            <select id="startDate">
+                <option>07/03/20</option>
+                <option>08/03/20</option>
+            </select>
+            <label>Select end date:</label>
+            <select id="endDate">
+                <option>08/03/20</option>
+                <option>09/03/20</option>
+            </select>
+        </div>
+        <button id="addEvent" onclick="submitEvent()">Add Event</button>
+    </div>
     <div id="toprow">
         <p id="month"></p>
         <div id="addRemove">
-            <button class="buttons">+</button>
-            <button class="buttons">-</button>
+            <button class="buttons" onclick="showForm()">+</button>
+            <button class="buttons" onclick="hideForm()">-</button>
         </div>
     </div>
     <div id="days">
@@ -61,9 +64,7 @@
             <li id="Fri">F</li>
             <li id="Sat">S</li>
         </ul>
-        <ul class="dayText" id="dayNumber">
-
-        </ul>
+        <ul class="dayText" id="dayNumber"></ul>
     </div>
     <p id="date"></p>
     <div id="dayEvents">
