@@ -388,13 +388,33 @@ article {
     margin:auto;
     margin-top:20px;
 }
-.questionText{
+
+.questionText {
     display: inline;
 }
-.questionNumber{
+
+.questionNumber {
     display: inline;
     font-weight: bold;
     font-size: 1em;
+}
+
+.question {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.dropdown {
+    font-size: 1.3em;
+}
+
+.selectBox {
+    font-size: 1.1em;
+}
+
+#submit {
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 /* @media screen and (max-width: 500px) {
