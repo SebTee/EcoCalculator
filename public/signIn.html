@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="./js/accounts.js"></script>
     <meta charset="UTF-8">
     <title>Sign In</title>
     <link rel="stylesheet" href="./stylesheets/style.css">
@@ -11,16 +12,16 @@
     </header>
 
     <form>
-        <input type="text" class="textbox" name="username" placeholder="Username">
-        <p><input type="text" class="textbox" name="password" placeholder="Password"></p>
+        <input id="email" type="text" class="textbox" name="email" placeholder="Email">
+        <p></p><input id="password" type="text" class="textbox" name="password" placeholder="Password"></p>
     </form>
 
     <button
-            class = "greenButton" onclick="window.location.href = './questionnaire.html';"
+            class = "greenButton" onclick="login();"
             type="button">Log In
     </button>
     <p><button
-            id="buttonWithMarginTop" onclick="window.location.href = './createAccount.html';"
+            onclick="window.location.href = './createAccount.html';"
             type="button">Need an Account?
     </button></p>
 
