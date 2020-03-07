@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <title>Questionnaire</title>
     <link rel="stylesheet" href="./stylesheets/style.css">
+    <script src="./js/questionnaire.js"></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <ul id="navbar-nav">
-                <li><a id="bold" href="./index.html"></a></li>
-
                 <li><button id="backButton"
                             onclick="window.location.href = './index.html';"
                             type="button"> <
                 </button></li>
-
-                <li><h1 id="heading2">Questionnaire</h1></li>
-
-
-
+                <li>
+                    <h1 id="heading2">Questionnaire</h1>
+                </li>
             </ul>
         </nav>
     </header>
+      <div id="questionsContainer">
+          <div id="dbQuestions"></div>
+          <button id="submit">Submit</button>
+      </div>
 </body>
 </html>
