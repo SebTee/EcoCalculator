@@ -8,13 +8,105 @@ body {
     border: 0;
 }
 
-#container{
-    width:50%;
+#taskContainer{
+    width:60%;
     margin:auto;
-    background-color: grey;
+    background-color: #e2e2e2;
+    padding: 20px;
+    height:100%;
+}
+.buttons{
+    display: inline;
+    padding:0;
+    margin:0;
+    width:50px;
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 1.2em;
+}
+
+#addRemove{
+    float: right;
 }
 
 #title{
     text-align: center;
 }
+
+#date {
+    text-align: left;
+    font-weight: bold;
+    padding:20px;
+}
+
+#month{
+    margin-left:47%;
+    font-weight: bold;
+    display: inline;
+    font-size:1.2em;
+}
+
+
+#days{
+    margin-top:40px;
+}
+.dayText{
+    list-style-type: none;
+    width:100%;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.dayText li{
+    padding: 0;
+    margin: 0;
+    display: inline;
+    width:14.28%;
+    text-align: center;
+    float:left;
+    /*background-color: dodgerblue;*/
+}
+
+.today {
+    background-color: lightgreen;
+    border-radius: 10px;
+}
+
+#dayEvents {
+    background-color: white;
+    height: 200px;
+}
+
+#eventForm {
+    position: absolute;
+    margin-left: 10%;
+    background-color: grey;
+    width: 40%;
+    height: auto;
+    display: none;
+}
+
+.close {
+    float: right;
+    width: 10%;
+    box-shadow: 0 0;
+    background-color: red;
+    border: black;
+}
+
+#addEvent {
+    width: 30%;
+    margin-left: 35%;
+    box-shadow: 0 0;
+    margin-bottom: 20px;
+}
+
+label, select {
+    display: block;
+    padding: 5px;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
 
