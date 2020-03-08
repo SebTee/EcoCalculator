@@ -102,7 +102,7 @@ body {
     margin-bottom: 20px;
 }
 
-label, select {
+label, select, input {
     display: block;
     padding: 5px;
     margin-left: 10%;

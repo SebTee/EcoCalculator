@@ -113,3 +113,7 @@ GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ecocalculator;
 GRANT ALL ON SCHEMA public TO ecocalculator;
 
 END TRANSACTION;
+
+-- TEST EVENTS (do not copy)
+-- INSERT INTO polluting_event (polluting_event_name, polluting_event_start_date, polluting_event_end_date, account_id) values ('Test Event', '2020-01-01','2020-01-02',1);
+-- INSERT INTO polluting_event (polluting_event_name, polluting_event_start_date, polluting_event_end_date, account_id) values ('Test Event 2', '2020-03-07','2020-03-10',1);
