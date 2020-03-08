@@ -162,8 +162,15 @@ async function generateResults(answers) {
 		answerIdArray.push(answers[answerIndex].answerId);
 		params.push('$' + (answerIndex + 1));
 	}
-	const res = await pool.query('SELECT SUM(answer_value) FROM answer WHERE answer_id IN (' + params.join(',') + ')', answerIdArray);
-	response.score = Number(res.rows[0].sum);
+	try {
+		let res = await pool.query('SELECT SUM(answer_value) FROM answer WHERE answer_id IN (' + params.join(',') + ')', answerIdArray);
+		response.score = Number(res.rows[0].sum);
+		res = await pool.query('SELECT question_category.question_category AS category, SUM(answer_value) AS score FROM answer JOIN question ON answer.question_id = question.question_id JOIN question_category ON question.question_category_id = question_category.question_category_id WHERE answer.answer_id IN (' + params.join(',') + ') GROUP BY question_category.question_category_id', answerIdArray);
+		response.categoryValues = res.rows;
+	}
+	catch (err) {
+		console.log(err);
+	}
 	return response;
 }
 
