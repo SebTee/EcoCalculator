@@ -12,7 +12,7 @@ function getQuestions() {
             //question number incremented after each loop (eg. 1,2,3. starts at q1)
             let questionNumber = 1
 
-            //inital loop to go through each question
+            //initial loop to go through each question
             data.questions.forEach(questions => {
 
                 // output is always  added too, never overwritten

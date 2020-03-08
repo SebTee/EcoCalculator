@@ -1,0 +1,9 @@
+/* QUESTIONS LAYOUT */
+#questionsContainer {
+    position: center;
+    padding-left: 2em;
+}
+
+#submit {
+    position: center;
+}
