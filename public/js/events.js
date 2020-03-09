@@ -1,13 +1,3 @@
-fetch('/api/v1/event')
-    .then(res => console.log(res));
-
-function test() {
-    let name = document.getElementById('eventSelect').value;
-    let start = new Date(document.getElementById('startDate').value);
-    let end = new Date(document.getElementById('endDate').value);
-    document.getElementById('test').innerHTML = name + start.toDateString() + ' To ' + end.toDateString();
-}
-
 function update() {
 
     getEvents();
@@ -52,10 +42,29 @@ function getEvents() {
                 let endDate = new Date(events.end);
                 let startFormat = startDate.getDate() + '-' + (startDate.getMonth() + 1) + '-' + startDate.getFullYear();
                 let endFormat = endDate.getDate() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getFullYear();
-                output += `<p>${events.name} From:  ${startFormat} to ${endFormat}</p>`
+
+                output += ` <div id="${events.id}" class="singleEvent"><p class="eventInfo">${events.name} From:  ${startFormat} to ${endFormat}</p><button class="deleteButtons" onclick="deleteEvent(${events.id})">X</button></div>`
             })
             document.getElementById('dayEvents').innerHTML = output;
         })
+}
+
+function deleteEvent(id) {
+
+    //Delete event and content by id
+    let selectedEvent = document.getElementById(id);
+    selectedEvent.innerHTML = "";
+    selectedEvent.id = '';
+
+    if (window.confirm('Are you Sure?')) {
+        fetch('/api/v1/event/?id=' + id, {
+            method: 'DELETE',
+        })
+            .then(res => console.log(res))
+    }
+
+    getEvents();
+
 }
 
 
@@ -75,8 +84,9 @@ function submitEvent() {
             start,
             end
         })
-    }).then(res => console.log(res))
+    }).then(function () {
+        getEvents()
+    })
 
-    getEvents();
 
 }
