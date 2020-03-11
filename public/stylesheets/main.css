@@ -1,0 +1,159 @@
+body, html {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
+
+/*Heading in green*/
+#heading {
+    color: #3fd923;
+    text-align: center;
+}
+
+/*Heading in black*/
+#heading2 {
+    color: black;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+
+
+/*Textbox padding*/
+.textbox {
+    border: 2px solid;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 5px;
+    display: block;
+    margin: auto;
+    width:210px;
+}
+
+
+
+input[type=checkbox]:checked   {
+    background: #327DFF;
+    outline: none;
+    border: 1px solid rgba(50,125,255,1);
+}
+input:focus,input:active {
+    outline: none;
+}
+
+input:hover {
+    border: 1px solid rgba(50,125,255,1);
+}
+
+/* Navigation */
+#navbar-nav {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    width: 100%;
+    align-items: center;
+    float:left;
+}
+
+#navbar-nav > li:nth-child(1) { justify-self: start }
+#navbar-nav > li:nth-child(3) { justify-self: end }
+
+.navbar {
+    background-color:#c0c0c0;
+    overflow: auto;
+    height: auto;
+    padding: 0px 0px 0px 0px;
+}
+
+/* .navbar a {
+  float: left;
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+} */
+
+.navbar ul {
+    margin: 0px 0 0 0;
+    list-style: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: #3fd923;
+}
+
+button{
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+button:hover{
+    color: #FFFFFF;
+    background-color: #22d40f;
+    opacity: 0.8;
+}
+
+#backBtn{
+    padding: 0.6em 1em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0 0 1em;
+    border-radius: 1em;
+}
+
+/* Navigation End */
+
+/* Buttons for different screen sizes*/
+@media only screen and (max-device-width: 480px) {
+    .button{
+        font-size: 9px;
+    }
+
+    #redoBtn{
+        margin: 0 0.5em 0 0.5em;
+        width: auto;
+    }
+
+    #addEventBtn{
+
+    }
+}
+/* Buttons End */
+
+
+/* Footer */
+#footerContainer{
+    position: static;
+    width: auto;
+    padding-top: 1em;
+    background-color: #c0c0c0;
+    text-align: center;
+    height: 3em;
+}
+
+/* Footer End */
+
+
+/*
+  form {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  input {
+    margin: 0 7px;
+  }
+*/

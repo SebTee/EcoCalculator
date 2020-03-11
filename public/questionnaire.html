@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Questionnaire</title>
-    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/main.css">
     <link rel="stylesheet" href="./stylesheets/questionnaire.css">
     <script src="./js/questionnaire.js"></script>
 </head>
-<body>
+<body onload="getQuestions();">
     <header>
         <nav class="navbar">
             <ul id="navbar-nav">
-                <li><button id="backButton"
+                <li><button class="button" id="backBtn"
                             onclick="window.location.href = './index.html';"
                             type="button"> <
                 </button></li>
@@ -23,7 +23,14 @@
     </header>
       <div id="questionsContainer">
           <div id="dbQuestions"></div>
-          <button id="submit">Submit</button>
       </div>
+
+    <footer>
+        <div id="footerContainer">
+            <button class="button" id="submitBtn"  onclick="window.location.href = './results.html';"
+                    type="button">Submit
+            </button>
+        </div>
+    </footer>
 </body>
 </html>
