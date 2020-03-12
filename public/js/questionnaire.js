@@ -1,5 +1,3 @@
-getQuestions();
-
 function getQuestions() {
     fetch('/api/v1/question')
         .then(res => res.json())
@@ -10,9 +8,9 @@ function getQuestions() {
             let output = '';
 
             //question number incremented after each loop (eg. 1,2,3. starts at q1)
-            let questionNumber = 1
+            let questionNumber = 1;
 
-            //inital loop to go through each question
+            //initial loop to go through each question
             data.questions.forEach(questions => {
 
                 // output is always  added too, never overwritten

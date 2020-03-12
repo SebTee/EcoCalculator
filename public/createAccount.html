@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>EcoCalculator</title>
-  <link rel="stylesheet" href="./stylesheets/style.css">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="./stylesheets/main.css">
+  <link rel="stylesheet" href="./stylesheets/createAccount.css">
 
   <script src="./js/accounts.js"></script>
 
@@ -34,25 +35,17 @@
   <label>I agree to the <a class = "link" href='./TermsOfService.html'>Terms and Conditions.</a></label>
 </div>
 
-  <button
-    class = "greenButton" onclick="createAccount();"
+<!--  Where does this link -->
+  <button id="createAccountBtn" onclick="createAccount();"
     type="button">Sign up
   </button>
 
-  <footer>
+  <button id="guestBtn" onclick="window.location.href = './questionnaire.html';"
+          type="button">Continue as a guest
+  </button>
 
-    <p><button
-      onclick="window.location.href = './questionnaire.html';"
-      type="button">Continue as a guest
-    </button></p>
-
-    <button
-      onclick="window.location.href = './signIn.html';"
-      type="button">Already have an account?
-    </button>
-
-  </footer>
-
+  <button id="signInBtn" onclick="window.location.href = './signIn.html';"
+          type="button">Already have an account?
+  </button>
 </body>
-
 </html>

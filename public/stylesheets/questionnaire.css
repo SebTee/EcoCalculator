@@ -1,0 +1,30 @@
+/* QUESTIONS LAYOUT */
+#questionsContainer {
+    position: center;
+    padding-left: 2em;
+    padding-bottom: 1em;
+
+}
+
+#submitBtn {
+    position: center;
+
+}
+
+#questionsContainer{
+    width:50%;
+    margin:auto;
+}
+
+.question {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.dropdown {
+    font-size: 1.3em;
+}
+
+.selectBox {
+    font-size: 1.1em;
+}
