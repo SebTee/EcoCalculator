@@ -1,6 +1,7 @@
 const pool = require("./database/dbClient");
 const getQuestionsAsJson = require("./question").getJson;
 const isLoggedIn = require("./account").isLoggedIn;
+const earthScore = 60;
 
 /**
  * Store a user's answer in the database.
@@ -162,8 +163,23 @@ async function generateResults(answers) {
 		answerIdArray.push(answers[answerIndex].answerId);
 		params.push('$' + (answerIndex + 1));
 	}
-	const res = await pool.query('SELECT SUM(answer_value) FROM answer WHERE answer_id IN (' + params.join(',') + ')', answerIdArray);
-	response.score = Number(res.rows[0].sum);
+	try {
+		const res = await pool.query('SELECT question_category.question_category AS category, SUM(answer.answer_value) AS score, question_category.question_category_suggestion AS suggestion FROM answer JOIN question ON answer.question_id = question.question_id JOIN question_category ON question.question_category_id = question_category.question_category_id WHERE answer.answer_id IN (' + params.join(',') + ') GROUP BY question_category.question_category_id ORDER BY score DESC', answerIdArray);
+		for (let i = 0; i < res.rows.length; i++) {
+			response.categoryValues.push({
+				"category": res.rows[i].category,
+				"score": res.rows[i].score
+			});
+			response.suggestions.push({
+				"suggestion": res.rows[i].suggestion
+			});
+			response.score += Number(res.rows[i].score);
+		}
+		response.suggestions = response.suggestions.slice(0, Math.floor(response.score / earthScore));
+	}
+	catch (err) {
+		console.log(err);
+	}
 	return response;
 }
 
