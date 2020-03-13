@@ -9,7 +9,8 @@ account_email VARCHAR(345) NOT NULL UNIQUE
 
 CREATE TABLE question_category(
 question_category_id INT PRIMARY KEY,
-question_category VARCHAR(32) NOT NULL
+question_category VARCHAR(32) NOT NULL,
+question_category_suggestion VARCHAR(128) NOT NULL
 );
 
 CREATE TABLE question(
@@ -43,11 +44,11 @@ polluting_event_end_date TIMESTAMP NOT NULL,
 account_id INT NOT NULL
 );
 
-INSERT INTO question_category (question_category_id, question_category) VALUES (1, 'Accomodation');
-INSERT INTO question_category (question_category_id, question_category) VALUES (2, 'Consumption');
-INSERT INTO question_category (question_category_id, question_category) VALUES (3, 'Utilities');
-INSERT INTO question_category (question_category_id, question_category) VALUES (4, 'Travel');
-INSERT INTO question_category (question_category_id, question_category) VALUES (5, 'Waste');
+INSERT INTO question_category (question_category_id, question_category, question_category_suggestion) VALUES (1, 'Accomodation', 'Try to improve the The energy efficency of your household. e.g. Use energy efficient bulbs.');
+INSERT INTO question_category (question_category_id, question_category, question_category_suggestion) VALUES (2, 'Consumption', 'Reduce the amount of meat you eat.');
+INSERT INTO question_category (question_category_id, question_category, question_category_suggestion) VALUES (3, 'Utilities', 'Reduce the number of times you use your washing machine or dish washer.');
+INSERT INTO question_category (question_category_id, question_category, question_category_suggestion) VALUES (4, 'Travel', 'Try to reduce the number of unnecasary trips or walk and cycle more.');
+INSERT INTO question_category (question_category_id, question_category, question_category_suggestion) VALUES (5, 'Waste', 'Try to buy local produce without plastic packaging.');
 
 INSERT INTO question (question_id, question, question_category_id) VALUES (1, 'How many people live with you?', 1);
 INSERT INTO answer (question_id, answer_display, answer_value) VALUES (1, 'I live by myself', 14);
