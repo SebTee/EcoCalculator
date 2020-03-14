@@ -5,6 +5,10 @@
     background-color: green;
 }
 
+#createAccountBtn:hover{
+    background-color: #green;
+}
+
 button {
     display: block;
     margin: 0.8em auto;
