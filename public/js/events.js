@@ -88,6 +88,4 @@ function submitEvent() {
     }).then(function () {
         getEvents()
     })
-
-
 }
