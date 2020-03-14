@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Create Account</title>
-  <link rel="stylesheet" href="./stylesheets/main.css">
-  <link rel="stylesheet" href="./stylesheets/createAccount.css">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="./stylesheets/main.css">
+    <link rel="stylesheet" href="./stylesheets/createAccount.css">
 
-  <script src="./js/accounts.js"></script>
+    <script src="./js/accounts.js"></script>
+  </head>
 
-</head>
+  <body>
 
-<body>
+    <header>
+      <h1 id="heading2">Create an account</h1>
+    </header>
 
-  <header>
-    <h1 id="heading2">Create an account</h1>
-  </header>
+    <form>
+      <input id="username" type="text" class="textbox" name="username" placeholder="Username">
+      <input id="email" type="text" class="textbox" name="email" placeholder="Email">
+      <input id="password"type="text" class="textbox" name="password" placeholder="Password">
+        <div class="help-tip">
+          <p>The password should be a minimum length of 8 or more characters. It should include lowercase, uppercase alphabetic characters and numbers.</p>
+        </div>
+      <input id ="pwConfirm" type="text" class="textbox" name="re-enterP" placeholder="Re-enter Password">
+    </form>
 
-  <form>
-    <input id="username" type="text" class="textbox" name="username" placeholder="Username">
-    <p><input id="email" type="text" class="textbox" name="email" placeholder="Email"></p>
-    <input id="password"type="text" class="textbox" name="password" placeholder="Password"><div class="help-tip">
-      <p>The password should be a minimum length of 8 or more characters. It should include lowercase, uppercase alphabetic characters and numbers.</p>
+    <div id="specificSize">
+      <input class="checkbox" type="checkbox" checked="checked">
+      <label>I agree to the <a class = "link" href='./TermsOfService.html'>Terms and Conditions.</a></label>
     </div>
 
-    <p><input id ="pwConfirm" type="text" class="textbox" name="re-enterP" placeholder="Re-enter Password"></p>
-  </form>
+  <!--  Where does this link to -->
+    <button id="createAccountBtn" onclick="createAccount();"
+      type="button">Sign up
+    </button>
 
-<div id="specificSize">
-  <input class="checkbox" type="checkbox" checked="checked">
-  <label>I agree to the <a class = "link" href='./TermsOfService.html'>Terms and Conditions.</a></label>
-</div>
+    <button id="guestBtn" onclick="window.location.href = './questionnaire.html';"
+            type="button">Continue as a guest
+    </button>
 
-<!--  Where does this link -->
-  <button id="createAccountBtn" onclick="createAccount();"
-    type="button">Sign up
-  </button>
-
-  <button id="guestBtn" onclick="window.location.href = './questionnaire.html';"
-          type="button">Continue as a guest
-  </button>
-
-  <button id="signInBtn" onclick="window.location.href = './signIn.html';"
-          type="button">Already have an account?
-  </button>
-</body>
+    <button id="signInBtn" onclick="window.location.href = './signIn.html';"
+            type="button">Already have an account?
+    </button>
+  </body>
 </html>
