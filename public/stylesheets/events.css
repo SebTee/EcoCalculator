@@ -102,11 +102,34 @@ body {
     margin-bottom: 20px;
 }
 
-label, select {
+label, select, input {
     display: block;
     padding: 5px;
     margin-left: 10%;
     margin-top: 10px;
 }
 
+.deleteButtons {
+    float: right;
+    display: inline;
+    height: auto;
+    width: 50px;
+    box-shadow: 0 0;
+    margin: 0px;
+    padding: 0px;
+}
+
+.eventInfo {
+    float: left;
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+.singleEvent {
+    display: block;
+    width: 100%;
+    height: 30px;
+    justify-content: left;
+}
 
