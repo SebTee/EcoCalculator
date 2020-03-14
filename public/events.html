@@ -8,7 +8,7 @@
     <script src="./js/events.js"></script>
 
 </head>
-<body onload="update()" onload="getEvents()">
+<body onload="update()">
 <header>
     <nav class="navbar">
         <ul id="navbar-nav">
@@ -27,23 +27,16 @@
 <div id="taskContainer">
     <div id="eventForm">
         <button class="close" onclick="hideForm()">X</button>
-
         <div id="eventDetails">
             <label>Select polluting event:</label>
             <select id="eventSelect">
-                <option>Car Journey</option>
-                <option>Plane Journey</option>
+                <option value="Car Journey">Car Journey</option>
+                <option value="Plane Journey">Plane Journey</option>
             </select>
-            <label>Select start date:</label>
-            <select id="startDate">
-                <option>07/03/20</option>
-                <option>08/03/20</option>
-            </select>
-            <label>Select end date:</label>
-            <select id="endDate">
-                <option>08/03/20</option>
-                <option>09/03/20</option>
-            </select>
+            <label>Start date:</label>
+            <input type="date" id="startDate">
+            <label>End date:</label>
+            <input type="date" id="endDate">
         </div>
         <button id="addEvent" onclick="submitEvent()">Add Event</button>
     </div>
@@ -68,8 +61,8 @@
     </div>
     <p id="date"></p>
     <div id="dayEvents">
-        Activites will be loaded here from db query, new events will be posted to db
     </div>
+    <div id="test"></div>
 </div>
 </body>
 </html>
