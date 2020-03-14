@@ -72,9 +72,8 @@ function submitEvent() {
 
     let name = document.getElementById('eventSelect').value;
     let start = new Date(document.getElementById('startDate').value);
-    let duration = document.getElementById('duration');
-    let end = new Date(document.getElementById('endDate').value);
-
+    let duration = document.getElementById('duration').value;
+    let end = new Date(start.getTime() + (duration * 24 * 60 * 60 * 1000));
 
     fetch('/api/v1/event', {
         method: 'POST',
