@@ -15,7 +15,17 @@ function createAccount() {
                 email,
                 password
             })
-        }).then(res => console.log(res))
+        }).then(res => {
+            if (res.status === 201) {
+                window.location.assign('./questionnaire.html')
+            }
+            else if (res.status === 409) {
+                alert('Email already in use')
+            }
+            else {
+                alert('Invalid email')
+            }
+        })
     }else{
         alert("Passwords don't match")
     }
@@ -33,7 +43,14 @@ function login() {
             email,
             password
         })
-    }).then(res => console.log(res))
+    }).then(res => {
+        if (res.status === 200) {
+            window.location.assign('./questionnaire.html')
+        }
+        else {
+            alert("Incorrect username or password.")
+        }
+    })
 }
 
 function onSignIn(googleUser) {
