@@ -80,6 +80,52 @@ describe("HTTP requests", () => {
                     done();
                 });
         });
+    });
+
+    describe("API gets", () => {
+        it("Create account", done => {
+            agent
+                .post('/api/v1/account/create')
+                .send({
+                    username: 'ecocalculator',
+                    password: 'ecocalculator',
+                    email: 'test@test.com'
+                })
+                .end((err, res) => {
+                    expect(err).equals(null);
+                    expect(res).to.have.status(201);
+                    expect(agent).to.have.cookie('connect.sid');
+                });
+        });
+
+        it("loggin", done => {
+            agent
+                .post('/api/v1/account/login')
+                .send({
+                    email: 'test@test.com',
+                    password: 'ecocalculator'
+                })
+                .end((err, res) => {
+                    expect(err).equals(null);
+                    expect(res).to.have.status(200);
+                    expect(agent).to.have.cookie('connect.sid');
+                    done();
+                })
+        });
+        it("loggin", done => {
+            agent
+                .post('/api/v1/account/login')
+                .send({
+                    email: 'test@test.com',
+                    password: 'qwerty'
+                })
+                .end((err, res) => {
+                    expect(err).equals(null);
+                    expect(res).to.have.status(401);
+                    expect(agent).to.have.cookie('connect.sid');
+                    done();
+                });
+        });
 
     });
 });
