@@ -9,7 +9,7 @@
     <script src="./js/events.js"></script>
 
 </head>
-<body onload="update()" onload="getEvents()">
+<body onload="update()">
 <header>
     <nav class="navbar">
         <ul id="navbar-nav">
@@ -28,12 +28,11 @@
 <div id="taskContainer">
     <div id="eventForm">
         <button class="close" onclick="hideForm()">X</button>
-
         <div id="eventDetails">
             <label>Select polluting event:</label>
             <select id="eventSelect">
-                <option>Car Journey</option>
-                <option>Plane Journey</option>
+                <option value="Car Journey">Car Journey</option>
+                <option value="Plane Journey">Plane Journey</option>
             </select>
             <label>Start date:</label>
             <input type="date" id="startDate">
@@ -63,7 +62,6 @@
     </div>
     <p id="date"></p>
     <div id="dayEvents">
-        Activities will be loaded here from db query, new events will be posted to db
     </div>
     </div>
 </body>
