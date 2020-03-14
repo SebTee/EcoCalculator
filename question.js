@@ -55,6 +55,7 @@ async function getQuestionsAsJson() {
 			"value": response.rows[i].answer_value
 		})
 	}
+	jsonResponse.questions.push(currentQuestion);
 	return jsonResponse;
 }
 
