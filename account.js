@@ -26,7 +26,19 @@ function create(req, res) {
 	if (validEmail(email)) {
 		const hash = bcrypt.hashSync(password, saltRounds);
 		pool.query("INSERT INTO account (account_name, account_password, account_email) VALUES ($1, $2, $3)", [username, hash, email])
-			.then(response => res.status(201).end(""))
+			.then(() => {
+				pool.query("SELECT account_id FROM account WHERE account_email = $1", [email])
+					.then(response => {
+						if (response.rows.length === 1) {
+							req.session.sessionName = response.rows[0].account_id;
+							res.status(201).send("");
+						}
+						else {
+							res.status(500).send('');
+						}
+					})
+					.catch(err => res.status(500).send(""));
+			})
 			.catch(err => {
 				if (err.code === "23505"){
 					res.status(409).end("email already in use in database");
