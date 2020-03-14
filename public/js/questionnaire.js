@@ -2,7 +2,7 @@ function getQuestions() {
     fetch('/api/v1/question')
         .then(res => res.json())
         .then((data) => {
-
+console.log(data);
 // output will contain all questions./answers fetched from db
 
             let output = '';
@@ -23,16 +23,16 @@ function getQuestions() {
                     if (i === 0) {
                         //first answer will open the drop down tag and add first answer
                         output += `<select id='${questionNumber}' class='selectBox'>`;
-                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`
+                        output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`
 
                     } else if (i == questions.answers.length - 1) {
                         //last answer value will insert last answer and end dropdown
-                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
+                        output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`;
                         output += `</select>`
 
                     } else {
                         //else the answer value is inserted into the drop down normally
-                        output += `<option class='dropdown' value='${answers.value}'>${answers.answer}</option>`;
+                        output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`;
 
                     }
                 })
@@ -43,4 +43,42 @@ function getQuestions() {
             document.getElementById('dbQuestions').innerHTML = output;
 
         })
+}
+
+function submitAnswers() {
+
+    let allAnswers = document.getElementsByClassName('selectBox');
+
+    let response = {"answers": []};
+
+    for (i = 0; i < allAnswers.length; i++) {
+        response.answers.push({
+            "questionId": allAnswers[i].id,
+            "answerId": allAnswers[i].value
+        });
+
+    }
+
+    console.log(response);
+
+    testResponse = response.answers;
+    console.log(testResponse);
+
+    formatResponse = JSON.stringify(testResponse);
+    console.log(formatResponse);
+
+    console.log(testResponse[3].questionId);
+
+
+    fetch('/api/v1/question', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "answers": response
+        })
+    }).then(res => console.log(res))
+
+
 }
