@@ -15,6 +15,11 @@ button {
     border: 0.1em solid;
 }
 
+#logInBtn{
+    background-color: green;
+    margin-top: 2.5em;
+}
+
 button:active{
     box-shadow: inset -2px -2px 3px #808080,
     inset 2px 2px 3px #808080;

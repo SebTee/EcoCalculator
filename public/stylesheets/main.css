@@ -60,7 +60,7 @@ input:focus,input:active {
 }
 
 input:hover {
-    border: 2px solid rgba(50,125,255,1);
+    border: 1.3px solid rgba(50,125,255,1);
 }
 /* User Information END */
 
