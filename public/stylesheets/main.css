@@ -77,6 +77,9 @@ input:hover {
     grid-template-columns: 1fr auto 1fr;
     width: 100%;
     align-items: center;
+
+    background-color: #c0c0c0;
+
 }
 
 .navbar a {
@@ -98,6 +101,8 @@ input:hover {
 
 #navbar-nav > li:nth-child(1) { justify-self: start }
 #navbar-nav > li:nth-child(3) { justify-self: end }
+
+#navbar-nav > li:nth-child(3) { padding-right: 5px; }
 
 button{
     display: inline-block;
@@ -123,12 +128,13 @@ button:hover{
 
 /* Footer */
 #footerContainer{
-    position: static;
-    width: auto;
+    position: absolute;
+    width: 100%;
     padding-top: 1em;
     background-color: #c0c0c0;
     text-align: center;
     height: 3em;
+    bottom: 0;
 }
 
 /* Footer End */
