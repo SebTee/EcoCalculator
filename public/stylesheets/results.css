@@ -1,7 +1,7 @@
 /*CSS for results.html*/
 
 html, body{
-    height: 100%;
+    margin: 0;
 }
 
 /* BUTTONS*/
@@ -57,7 +57,8 @@ article {
     border: 0.2em solid #c0c0c0;
     max-width:70%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 90px;
+    padding-top: 0px;
 }
 
 #recommendationsBorder{
@@ -71,11 +72,11 @@ article {
 #recommendationsBorder:after {
     content: "";
     display: block;
-    padding-bottom: 100%;
+    margin-bottom:20px;
 }
 
-#content {
-    position: absolute;
+#contentForRecommendations {
+    position: relative;
     width: 100%;
     height: 100%;
     padding-left: 15px;
@@ -90,17 +91,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
-/*Pie chart*/
-/*
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: auto;
-    position: relative;
-    width: 960px;
-  }
-
-  text {
-    font: 10px sans-serif;
-  }
-  */

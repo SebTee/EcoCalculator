@@ -66,20 +66,20 @@ input:hover {
 
 /* Navigation */
 .navbar {
+    width: 100%;
+    top: 0;
+    overflow: hidden;
     background-color:#c0c0c0;
-    /*overflow: auto;*/
-    /*height: auto;*/
+    position: -webkit-sticky;
+    position: fixed;
+    z-index: 9;
 }
 
 #navbar-nav {
     padding: 0;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    width: 100%;
     align-items: center;
-
-    background-color: #c0c0c0;
-
 }
 
 .navbar a {
@@ -135,23 +135,4 @@ button:hover{
     text-align: center;
     height: 3em;
     bottom: 0;
-}
-
-/* Footer End */
-
-
-/*
-  form {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
-
-  input {
-    margin: 0 7px;
-  }
-*/
-
-#errorDisplay{
-    color: red;
 }
