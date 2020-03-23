@@ -20,14 +20,14 @@ function createAccount() {
                 window.location.assign('./questionnaire.html')
             }
             else if (res.status === 409) {
-                alert('Email already in use')
+				displayError('Email already in use')
             }
             else {
-                alert('Invalid email')
+				displayError('Invalid email')
             }
         })
     }else{
-        alert("Passwords don't match")
+		displayError("Passwords don't match")
     }
 }
 
@@ -48,9 +48,13 @@ function login() {
             window.location.assign('./questionnaire.html')
         }
         else {
-            alert("Incorrect username or password.")
+			displayError("Incorrect username or password.")
         }
     })
+}
+
+function displayError(errorMessage) {
+	document.getElementById('errorDisplay').innerText = errorMessage;
 }
 
 function onSignIn(googleUser) {
