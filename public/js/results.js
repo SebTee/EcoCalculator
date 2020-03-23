@@ -32,15 +32,28 @@ function checkResults() {
                     res.json().then(json => {
                         window.localStorage.setItem('ecocalculator.results', JSON.stringify(json));
                         const results = window.localStorage.getItem('ecocalculator.results');
-                        generateChart(results);
+                        displayResults(results);
                     })
                 } else {
                     window.location.assign('./questionnaire.html');
                 }
             })
     } else {
-        generateChart(results);
+        displayResults(results);
     }
+}
+
+function displayResults(results) {
+    generateChart(results);
+    displayRecommendations(results);
+}
+
+function displayRecommendations(results) {
+    let recommendationsList = ``;
+    for (let i = 0; i < results.suggestions.length; i++) {
+        recommendationsList += `<li>${results.suggestions[i].suggestion}</li>`
+    }
+    document.getElementById('recommendationsList').innerHTML = recommendationsList;
 }
 
 function generateChart(results) {
