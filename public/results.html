@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Results</title>
+    <link rel="stylesheet" href="./stylesheets/main.css">
+    <link rel="stylesheet" href="./stylesheets/results.css">
 
-  <title>EcoCalculator</title>
-  <link rel="stylesheet" href="./stylesheets/style.css">
-
-
-  <script src="./PieChart/doughnut/js/Chart.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-
-
-</head>
-
-<body>
-<header>
-  <nav class="navbar">
-    <ul id="navbar-nav">
-      <li><button id ="backButton"
-                      onclick="window.location.href = './index.html';"
-                      type="button"> <
-      </button></li>
-
-      <li><h1 id="heading2">Results</h1></li>
-
-      <li><button id="headerButton"
-        onclick="window.location.href = './questionnaire.html';"
-        type="button">Redo Questionnaire
-      </button></li>
-
-    </ul>
-  </nav>
-  </header>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./js/results.js"></script>
 
 
-  <div class="move">
-    <article id="align">
+  </head>
 
-      <h1 class="center">Diagram</h1>
+  <body>
+    <header>
+      <nav class="navbar">
+        <ul id="navbar-nav">
+          <li><button id ="backBtn"
+              onclick="window.location.href = './index.html';"
+              type="button"> <
+          </button>
+          </li>
 
-        <form></form>
+          <li><h1 id="heading2">Results</h1></li>
 
-    </article>
-  </div>
+          <li><button id="redoBtn"
+            onclick="window.location.href = './questionnaire.html';"
+            type="button">Redo Questionnaire
+          </button></li>
+
+        </ul>
+      </nav>
+    </header>
+
+<!--  DIAGRAM RESULTS  -->
+    <div class="move">
+      <div id="align">
+        <h1 class="center">Diagram</h1>
+
+        <div id="chart"></div>
+      </div>
+    </div>
+
 
   <div class="move">
     <article id="recommendations">
@@ -53,22 +52,19 @@
       <div id="customised"><h1 class="center">Recommendations</h1></div>
 
       <section>
-        <h3>First recommendation</h3>
-        <ul>
-          <li>...</li>
+        <ul id="recommendationsList">
         </ul>
       </section>
     </article>
   </div>
 
+    <footer>
+      <div id="footerContainer">
+        <button id="addEventBtn"  onclick="window.location.href = './events.html';"
+                type="button">Add event
+        </button>
+      </div>
+    </footer>
 
-  <footer id="customisedFooter">
-    <button
-      onclick="window.location.href = './events.html';"
-      type="button">Add event
-    </button>
-  </footer>
-
-</body>
-
+  </body>
 </html>

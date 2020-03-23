@@ -36,6 +36,13 @@ h4 {
     margin-bottom: 15px;
 }
 
+#extraMargin{
+  text-align: center;
+  font-size: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 /*Textbox padding*/
 .textbox {
   border: 2px solid;
@@ -74,12 +81,13 @@ input[type=checkbox]:checked   {
     outline: none;
     border: 1px solid rgba(50,125,255,1);
 }
+
 input:focus,input:active {
 	outline: none;
 }
 
 input:hover {
-   border: 1px solid rgba(50,125,255,1);
+   border: 2px solid rgba(50,125,255,1);
 }
 
 /*Buttons*/
@@ -141,6 +149,10 @@ button:active{
   color:white;
   background-color: green;
   border: 2px solid black;
+}
+
+#buttonWithMarginTop{
+  margin-top: 40px;
 }
 
 button {

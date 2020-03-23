@@ -1,0 +1,75 @@
+/*CSS for results.html*/
+
+/* BUTTONS*/
+#redoBtn{
+    padding: 0.6em 1em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.5em 0 0;
+    border-radius: 1em;
+}
+
+#addEventBtn{
+    padding: 0.6em 3em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.5em 0 0;
+}
+
+.bold{
+    font-weight: 900;
+}
+
+.center{
+    text-align:center;
+}
+
+/*CSS for borders with text*/
+
+#align {
+    margin: auto;
+    width: 60%;
+    padding: 1em 1.25em 1.25em 1.25em;
+}
+
+.move {
+    transition: margin-left 0.5s;
+    padding: 1.25em;
+    overflow: hidden;
+    width: 100%;
+}
+
+#customised{
+    background-color:#c0c0c0;
+    padding: 0.01em;
+}
+
+article {
+    display: block;
+    border: 0.2em solid #c0c0c0;
+    font-size:14px;
+}
+
+#recommendations{
+    margin: auto;
+    width: 60%;
+    padding: 1em 1.25em 1.25em 1.25em;
+    display: block;
+    border: 0.2em solid #c0c0c0;
+    font-size:14px;
+    overflow:auto;
+}
+
+
+
+/*Pie chart*/
+/*
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: auto;
+    position: relative;
+    width: 960px;
+  }
+
+  text {
+    font: 10px sans-serif;
+  }
+  */
