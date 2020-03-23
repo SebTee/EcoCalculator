@@ -25,7 +25,7 @@ console.log(data);
                         output += `<select id='${questionNumber}' class='selectBox'>`;
                         output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`
 
-                    } else if (i == questions.answers.length - 1) {
+                    } else if (i === questions.answers.length - 1) {
                         //last answer value will insert last answer and end dropdown
                         output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`;
                         output += `</select>`
@@ -33,9 +33,8 @@ console.log(data);
                     } else {
                         //else the answer value is inserted into the drop down normally
                         output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`;
-
                     }
-                })
+                });
 
                 questionNumber++;
 
@@ -53,21 +52,23 @@ function submitAnswers() {
 
     for (i = 0; i < allAnswers.length; i++) {
         response.answers.push({
-            "questionId": allAnswers[i].id,
-            "answerId": allAnswers[i].value
+            "questionId": Number(allAnswers[i].id),
+            "answerId": Number(allAnswers[i].value)
         });
-
     }
 
+
     console.log(response);
+    /*
+        testResponse = response.answers;
+        console.log(testResponse);
 
-    testResponse = response.answers;
-    console.log(testResponse);
+        formatResponse = JSON.stringify(testResponse);
+        console.log(formatResponse);
 
-    formatResponse = JSON.stringify(testResponse);
-    console.log(formatResponse);
+        console.log(testResponse.length);
 
-    console.log(testResponse[3].questionId);
+         */
 
 
     fetch('/api/v1/question', {
@@ -75,10 +76,13 @@ function submitAnswers() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            "answers": response
-        })
-    }).then(res => console.log(res))
-
-
+        body: JSON.stringify(
+            response
+        )
+    }).then(res => {
+        res.json().then(json => {
+            window.localStorage.setItem('ecocalculator.results', JSON.stringify(json));
+            window.location.assign('./results.html');
+        });
+    })
 }

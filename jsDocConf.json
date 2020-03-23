@@ -3,11 +3,11 @@
     "plugins": [
       "plugins/markdown"
     ],
-    "excludePattern": "(node_modules|out)",
-    "includePattern": ".+\\.js?$"
+    "excludePattern": "(node_modules|docs)"
   },
 
   "opts": {
-    "recurse": true
+    "recurse": true,
+    "destination": "docs/"
   }
 }

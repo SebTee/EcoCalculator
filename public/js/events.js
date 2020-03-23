@@ -32,7 +32,7 @@ function getEvents() {
     fetch('/api/v1/event')
         .then(res => res.json())
         .then((data) => {
-            console.log(data)
+            console.log(data);
 
             let output = '';
 
@@ -44,7 +44,7 @@ function getEvents() {
                 let endFormat = endDate.getDate() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getFullYear();
 
                 output += ` <div id="${events.id}" class="singleEvent"><p class="eventInfo">${events.name} From:  ${startFormat} to ${endFormat}</p><button class="deleteButtons" onclick="deleteEvent(${events.id})">X</button></div>`
-            })
+            });
             document.getElementById('dayEvents').innerHTML = output;
         })
 }
@@ -88,6 +88,4 @@ function submitEvent() {
     }).then(function () {
         getEvents()
     })
-
-
 }

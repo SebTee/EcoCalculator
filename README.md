@@ -3,7 +3,7 @@ Want to reduce your carbon footprint? find out how!
 
 [Test Server](https://sebtee.com/eco/)
 
-## Documentation
+## [Documentation](https://sebtee.github.io/EcoCalculator/ecocalculator/0.0.0/)
 
 generate documentation command to run in project root file
 ```bash

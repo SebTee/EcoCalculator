@@ -15,9 +15,19 @@ function createAccount() {
                 email,
                 password
             })
-        }).then(res => console.log(res))
+        }).then(res => {
+            if (res.status === 201) {
+                window.location.assign('./questionnaire.html')
+            }
+            else if (res.status === 409) {
+				displayError('Email already in use')
+            }
+            else {
+				displayError('Invalid email')
+            }
+        })
     }else{
-        alert("Passwords don't match")
+		displayError("Passwords don't match")
     }
 }
 
@@ -33,16 +43,27 @@ function login() {
             email,
             password
         })
-    }).then(res => console.log(res))
+    }).then(res => {
+        if (res.status === 200) {
+            window.location.assign('./questionnaire.html')
+        }
+        else {
+			displayError("Incorrect username or password.")
+        }
+    })
+}
+
+function displayError(errorMessage) {
+	document.getElementById('errorDisplay').innerText = errorMessage;
 }
 
 function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
+    let profile = googleUser.getBasicProfile();
     console.log("Email: " + profile.getEmail()); // Don't send this directly to your server!
     console.log('Password: ' + profile.g());
 
     // The ID token you need to pass to your backend:
-    var id_token = googleUser.getAuthResponse().id_token;
+    let id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
 }

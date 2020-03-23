@@ -7,6 +7,10 @@ const session = require('express-session');
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
+/**
+ * Express Application Object
+ * @type {Object}
+ */
 const app = express();
 
 app.use(logger('dev'));
