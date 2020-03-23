@@ -25,7 +25,7 @@ console.log(data);
                         output += `<select id='${questionNumber}' class='selectBox'>`;
                         output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`
 
-                    } else if (i == questions.answers.length - 1) {
+                    } else if (i === questions.answers.length - 1) {
                         //last answer value will insert last answer and end dropdown
                         output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`;
                         output += `</select>`
@@ -33,9 +33,8 @@ console.log(data);
                     } else {
                         //else the answer value is inserted into the drop down normally
                         output += `<option class='dropdown' value='${answers.answerId}'>${answers.answer}</option>`;
-
                     }
-                })
+                });
 
                 questionNumber++;
 
@@ -56,7 +55,6 @@ function submitAnswers() {
             "questionId": Number(allAnswers[i].id),
             "answerId": Number(allAnswers[i].value)
         });
-
     }
 
 
@@ -87,6 +85,4 @@ function submitAnswers() {
             window.location.assign('./results.html');
         });
     })
-
-
 }
