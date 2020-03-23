@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: routes/api.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,60 +17,63 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: routes/api.js</h1>
 
     
 
 
 
     
-
-
-    <h3>ecocalculator 0.0.0</h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>EcoCalculator</h1>
-<p>Want to reduce your carbon footprint? find out how!</p>
-<p><a href="https://sebtee.com/eco/">Test Server</a></p>
-<h2><a href="https://sebtee.github.io/EcoCalculator/ecocalculator/0.0.0/">Documentation</a></h2>
-<p>generate documentation command to run in project root file</p>
-<pre class="prettyprint source lang-bash"><code>jsdoc -c ./jsDocConf.json *
+        <article>
+            <pre class="prettyprint source linenums"><code>const express = require('express');
+const account = require('../account');
+const question = require('../question');
+const result = require('../result');
+const event = require('../event');
+
+/**
+ * Routes for the API
+ * @type {Router}
+ */
+const apiRouter = express.Router();
+
+apiRouter.post('/account/create', (req, res, next) => {
+  account.create(req, res);
+});
+
+apiRouter.post('/account/login', (req, res, next) => {
+  account.login(req, res);
+});
+
+apiRouter.get('/question', (req, res, next) => {
+  question.get(req, res);
+});
+
+apiRouter.post('/question', (req, res, next) => {
+  result.submit(req, res);
+});
+
+apiRouter.get('/result', (req, res, next) => {
+  result.getResult(req, res);
+});
+
+apiRouter.post('/event', (req, res, next) => {
+  event.addEvent(req, res);
+});
+
+apiRouter.get('/event', (req, res, next) => {
+  event.getEvents(req, res);
+});
+
+apiRouter.delete('/event', (req, res, next) => {
+  event.deleteEvent(req, res);
+});
+
+module.exports = apiRouter;
 </code></pre>
-<h3>Legend</h3>
-<ul>
-<li>
-<p><a href="https://github.com/AhmadKhuzaei">AhmadKhuzaei</a> - Ahmad Al-khuzaei (up879591)</p>
-</li>
-<li>
-<p><a href="https://github.com/Nikki789">Nikki789</a> - Nikoleta Koleva (up899244)</p>
-</li>
-<li>
-<p><a href="https://github.com/Olliejb1">Olliejb1</a> - Oliver Borsberry (up896129)</p>
-</li>
-<li>
-<p><a href="https://github.com/up900822">up900822</a> - Priya Bhatti (up900822)</p>
-</li>
-<li>
-<p><a href="https://github.com/SebTee">SebTee</a> - Sebastian Tee (up886472)</p>
-</li>
-</ul></article>
+        </article>
     </section>
-
-
 
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: app.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,60 +17,48 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: app.js</h1>
 
     
 
 
 
     
-
-
-    <h3>ecocalculator 0.0.0</h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>EcoCalculator</h1>
-<p>Want to reduce your carbon footprint? find out how!</p>
-<p><a href="https://sebtee.com/eco/">Test Server</a></p>
-<h2><a href="https://sebtee.github.io/EcoCalculator/ecocalculator/0.0.0/">Documentation</a></h2>
-<p>generate documentation command to run in project root file</p>
-<pre class="prettyprint source lang-bash"><code>jsdoc -c ./jsDocConf.json *
+        <article>
+            <pre class="prettyprint source linenums"><code>const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+
+const indexRouter = require('./routes/index');
+const apiRouter = require('./routes/api');
+
+/**
+ * Express Application Object
+ * @type {Object}
+ */
+const app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+	'secret': 'w&amp;W!wJ$ME@YgKg^3TF#HpTmNBOwU3M8XbFivkC*HuKrMZsjbUnT#YsiVKXG6ugjr',
+	'resave': false,
+	'saveUninitialized': false
+}));
+
+app.use('/', indexRouter);
+app.use('/api/v1', apiRouter);
+
+module.exports = app;
 </code></pre>
-<h3>Legend</h3>
-<ul>
-<li>
-<p><a href="https://github.com/AhmadKhuzaei">AhmadKhuzaei</a> - Ahmad Al-khuzaei (up879591)</p>
-</li>
-<li>
-<p><a href="https://github.com/Nikki789">Nikki789</a> - Nikoleta Koleva (up899244)</p>
-</li>
-<li>
-<p><a href="https://github.com/Olliejb1">Olliejb1</a> - Oliver Borsberry (up896129)</p>
-</li>
-<li>
-<p><a href="https://github.com/up900822">up900822</a> - Priya Bhatti (up900822)</p>
-</li>
-<li>
-<p><a href="https://github.com/SebTee">SebTee</a> - Sebastian Tee (up886472)</p>
-</li>
-</ul></article>
+        </article>
     </section>
-
-
 
 
 
