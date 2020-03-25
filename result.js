@@ -40,7 +40,7 @@ async function storeResults(accountId, answers) {
  */
 function getResults(req, res) {
 	if (isLoggedIn(req)) { //checks is user logged in
-		pool.query('SELECT question_id, answer_id FROM account_answer WHERE $1', [req.session.sessionName])
+		pool.query('SELECT question_id, answer_id FROM account_answer WHERE account_id = $1', [req.session.sessionName])
 			.then(response => {
 				if (response.rows.length > 0) {
 					const answers = [];
