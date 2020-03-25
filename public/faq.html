@@ -4,17 +4,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>EcoCalculator</title>
+        <title>FAQ</title>
         <link rel="stylesheet" href="./stylesheets/main.css">
         <link rel="stylesheet" href="./stylesheets/faq.css">
     </head>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     <body>
         <header>
             <nav class="navbar">
                 <ul id="navbar-nav">
                     <li><button id ="backBtn"
-                                onclick="window.location.href = './index.html';"
+                                onclick=goBack();
                                 type="button"> <
                     </button>
                     </li>
@@ -27,7 +31,7 @@
         <section class="faqContainer">
             <div class="faqItems">
                 <ul id="general" class="faqGroup">
-                    <div class="faqTitle">General</div>
+                    <li class="faqTitle"> General </li>
                     <li class="faqItems">
                         <span class="faqTrigger">How do I sign up?</span>
                         <div class="faqContent">

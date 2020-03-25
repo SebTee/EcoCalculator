@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Results</title>
-  <link rel="stylesheet" href="./stylesheets/main.css">
-  <link rel="stylesheet" href="./stylesheets/results.css">
+    <title>Results</title>
+    <link rel="stylesheet" href="./stylesheets/main.css">
+    <link rel="stylesheet" href="./stylesheets/results.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <script src="./js/results.js"></script>
+    <script src="./PieChart/DonutChart.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
 
-</head>
+  <header>
+    <div class="sticky">
+      <nav class="navbar">
+        <ul id="navbar-nav">
+          <li><button id ="backBtn"
+              onclick="window.location.href = './index.html';"
+              type="button"> <
+          </button>
+          </li>
 
-<body>
-<header>
-  <nav class="navbar">
-    <ul id="navbar-nav">
-      <li><button id ="backBtn"
-                  onclick="window.location.href = './index.html';"
-                  type="button"> <
-      </button>
-      </li>
+          <li><h1 id="heading2">Results</h1></li>
 
-      <li><h1 id="heading2">Results</h1></li>
+          <li><button id="redoBtn"
+            onclick="window.location.href = './questionnaire.html';"
+            type="button">Redo Questionnaire
+          </button></li>
 
-      <li><button id="redoBtn"
-                  onclick="window.location.href = './questionnaire.html';"
-                  type="button">Redo Questionnaire
-      </button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    </ul>
-  </nav>
-</header>
 
 <!--  DIAGRAM RESULTS  -->
-<div class="move">
-  <div id="align">
-    <h1 class="center">Diagram</h1>
 
-    <div id="chart"></div>
-  </div>
-</div>
+    <article id="chartBorder">
+    <div class="move">
+      <div id="align">
+
+        <div id="chart"></div>
+
+      <script>
+        const chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+      </script>
+      </div>
+    </div>
+    </article>
 
 
-<div class="move">
-  <article id="recommendations">
 
-    <div id="customised"><h1 class="center">Recommendations</h1></div>
+    <article id="recommendationsBorder">
 
-    <section>
-      <ul id="recommendationsList">
-      </ul>
-    </section>
-  </article>
-</div>
+      <div id="customised"><h1 class="center">Recommendations</h1></div>
 
-<footer>
-  <div id="footerContainer">
-    <button id="addEventBtn"  onclick="window.location.href = './events.html';"
-            type="button">Add event
-    </button>
-  </div>
-</footer>
+      <section id="contentForRecommendations">
+        <h3>First recommendation</h3>
+        <ul>
+          <li>...</li>
+        </ul>
+      </section>
+    </article>
 
-</body>
+    <footer>
+        <button class="button" id="addEventBtn" onclick="window.location.href = './events.html';"
+                type="button">Add event
+        </button>
+      <button class="button" id="faqButton" onclick="window.location.href = './faq.html';" type="button">
+          FAQ
+      </button>
+    </footer>
+
 </html>
