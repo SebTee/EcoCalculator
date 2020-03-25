@@ -4,38 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   <title>EcoCalculator</title>
-  <link rel="stylesheet" href="./stylesheets/style.css">
-
+  <link rel="stylesheet" href="./stylesheets/main.css">
+  <link rel="stylesheet" href="./stylesheets/createAccount.css">
 </head>
 
 <body>
 
-  <header>
-    <h1 id="heading">Welcome to EcoCalculator!</h1>
-    <picture>
-      <img class="logo" alt="EcoCalculator Logo" title="EcoCalculator Logo" src="images/eco.png">
-    </picture>
-  </header>
 
-  <button
-    onclick="window.location.href = './signIn.html';"
-    type="button">Log in
-  </button>
+  <div class="mainContainer">
+      <header>
+              <h1 id="heading">Welcome to EcoCalculator</h1>
+              <picture>
+                  <img class="logo" alt="EcoCalculator Logo" title="EcoCalculator Logo" src="images/eco.png">
+              </picture>
+      </header>
 
-  <p><button
-    onclick="window.location.href = './createAccount.html';"
-    type="button">Sign Up with Email
-  </button></p>
+      <div class="line"></div>
 
-  <h4><a class = "link" href="./questionnaire.html">Continue as a guest</a></h4>
+<!--      contains the main content-->
+      <div class="secondContainer">
+          <button
+                  onclick="window.location.href = './signIn.html';"
+                  type="button">Log in
+          </button>
 
-  <footer id="specificSize">By signing up you agree with
-    <a class="link" href="./TermsOfService.html">Terms of Service</a>
-    and <a class="link" href="./TermsOfService.html">Privacy policy.</a>
-  </footer>
+          <p><button
+                  onclick="window.location.href = './createAccount.html';"
+                  type="button">Sign Up with Email
+          </button></p>
 
+          <h4><a class = "link" href="./questionnaire.html">Continue as a guest</a></h4>
+
+          <div id="specificSize">
+              By signing up you agree with
+              <a class="link" href="./TermsOfService.html">Terms of Service</a>
+              and <a class="link" href="./TermsOfService.html">Privacy policy.</a>
+          </div>
+
+        </div>
+  </div>
 </body>
-
 </html>

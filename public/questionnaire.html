@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Questionnaire</title>
-    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/main.css">
+    <link rel="stylesheet" href="./stylesheets/questionnaire.css">
     <script src="./js/questionnaire.js"></script>
 </head>
-<body>
+<body onload="getQuestions();">
     <header>
         <nav class="navbar">
             <ul id="navbar-nav">
-                <li><button id="backButton"
+                <li><button class="button" id="backBtn"
                             onclick="window.location.href = './index.html';"
                             type="button"> <
                 </button></li>
@@ -21,9 +23,16 @@
         </nav>
     </header>
       <div id="questionsContainer">
-          <p id="test">test</p>
           <div id="dbQuestions"></div>
-          <button id="submit" onclick="submitAnswers()">Submit</button>
+          <div id="errorDisplay"></div>
       </div>
+
+    <footer>
+        <div id="footerContainer">
+            <button class="button" id="submitBtn" onclick="submitAnswers()"
+                    type="button">Submit
+            </button>
+        </div>
+    </footer>
 </body>
 </html>

@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="./stylesheets/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="./stylesheets/main.css">
     <link rel="stylesheet" href="./stylesheets/events.css">
     <script src="./js/events.js"></script>
 
@@ -13,7 +14,7 @@
     <nav class="navbar">
         <ul id="navbar-nav">
             <li>
-                <button id="backButton"
+                <button class="button" id="backBtn"
                         onclick="window.location.href = './index.html';"
                         type="button"> <
                 </button>
@@ -28,19 +29,25 @@
     <div id="eventForm">
         <button class="close" onclick="hideForm()">X</button>
         <div id="eventDetails">
+            <h1 id="formTitle">Add event form:</h1>
             <label>Select polluting event:</label>
             <select id="eventSelect">
+                <option disabled selected value> -- select an option --</option>
                 <option value="Car Journey">Car Journey</option>
                 <option value="Plane Journey">Plane Journey</option>
+                <option value="Processed Meat Consumption">Processed Meat Consumption</option>
+                <option value="Washer/Dryer usage">Washer/Dryer usage</option>
+                <option value="Clothing purchase">Clothing purchase</option>
             </select>
             <label>Start date:</label>
             <input type="date" id="startDate">
-            <label>End date:</label>
-            <input type="date" id="endDate">
+            <label>Duration (Days):</label>
+            <input type="number" id="duration">
+            <p id="errorMessage">Please Check all fields are filled out correctly and try again</p>
         </div>
         <button id="addEvent" onclick="submitEvent()">Add Event</button>
     </div>
-    <div id="toprow">
+    <div id="topRow">
         <p id="month"></p>
         <div id="addRemove">
             <button class="buttons" onclick="showForm()">+</button>
@@ -62,7 +69,6 @@
     <p id="date"></p>
     <div id="dayEvents">
     </div>
-    <div id="test"></div>
-</div>
+    </div>
 </body>
 </html>

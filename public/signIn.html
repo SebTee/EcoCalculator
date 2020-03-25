@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="./js/accounts.js"></script>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="919736192879-n4pddoettncd3p3g7ieeg27haasv2ich.apps.googleusercontent.com.apps.googleusercontent.com">
+    <script src="./js/accounts.js"></script>
     <title>Sign In</title>
-    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/main.css">
+    <link rel="stylesheet" href="./stylesheets/createAccount.css">
 </head>
 <body>
     <header>
         <h1 id="heading2">Sign In</h1>
     </header>
 
-    <form>
-        <input id="email" type="text" class="textbox" name="email" placeholder="Email">
-        <p></p><input id="password" type="text" class="textbox" name="password" placeholder="Password"></p>
-    </form>
+    <section id="signIn">
+        <form>
+            <div id="errorDisplay"></div>
+            <input id="email" type="email" class="textbox" name="email" placeholder="Email">
+            <input id="password" type="password" class="textbox" name="password" placeholder="Password">
+        </form>
 
-    <button
-            class = "greenButton" onclick="login();"
-            type="button">Log In
-    </button>
-    <p><button
-            onclick="window.location.href = './createAccount.html';"
-            type="button">Need an Account?
-    </button></p>
+        <button id = "logInBtn" onclick="login();" type="button">Log In </button>
+        <button onclick="window.location.href = './createAccount.html';" type="button">Need an Account?
+        </button>
 
+<!--        <div class="g-signin" data-onsuccess="onSignIn">-->
+<!--            <img src="images/btn_google.png" alt="">-->
+<!--        </div>-->
+    </section>
 </body>
 </html>
