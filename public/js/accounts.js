@@ -3,31 +3,13 @@
  * inputted details from html page</p>
  */
 function createAccount() {
-    /**
-     * User email
-     * @type {string}
-     */
     const email = document.getElementById("email").value;
-
-    /**
-     * User username
-     * @type {string}
-     */
     const username = document.getElementById("username").value;
-
-    /**
-     * User password
-     * @type {string}
-     */
     const password = document.getElementById("password").value;
-
-    /**
-     * User pwConfirm
-     * @type {string}
-     */
     const pwConfirm = document.getElementById("pwConfirm").value;
+    const termsAgreed = document.getElementById("termsCheckbox").checked;
 
-    if (pwConfirm === password) {
+    if (pwConfirm === password && termsAgreed) {
         fetch('/api/v1/account/create', {
             method: 'POST',
             headers: {
@@ -47,8 +29,10 @@ function createAccount() {
                 displayError('Invalid email')
             }
         })
-    }else{
+    }else if (termsAgreed){
         displayError("Passwords don't match")
+    } else {
+        displayError("You have to agree to the terms and conditions before creating an account")
     }
 }
 
