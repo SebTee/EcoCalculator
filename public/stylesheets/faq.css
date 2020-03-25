@@ -1,0 +1,36 @@
+
+.faqContainer {
+    position: center;
+    margin: 2em auto;
+    padding-top: 2em;
+    background-color: #8e908c;
+    width: 60%;
+}
+
+.faqTitle {
+    margin: 0;
+    text-align: center;
+    font-size: 2em;
+    padding: 1em;
+    position: center;
+    font-weight: bold;
+}
+
+.faqTrigger {
+    font-weight: bold;
+}
+
+.faqItems {
+    list-style: none;
+    position: relative;
+    height: 100%;
+    width: 90%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+.faqGroup {
+    padding-top: 0.5em;
+}

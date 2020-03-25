@@ -8,7 +8,7 @@
 }
 
 #submitBtn {
-    position: center;
+    text-align: center;
     padding: 0.6em 3em;
     border: 0.1em solid #FFFFFF;
     margin: 0 0.5em 0 0;

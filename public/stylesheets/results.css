@@ -34,11 +34,8 @@ html, body{
 }
 
 .move {
-    margin-top: 50px;
     transition: margin-left 0.5s;
-    padding: 1.25em;
-    padding-left: 0em;
-    padding-right: 0em;
+    padding: 1.25em 0 0 0;
     overflow: hidden;
     width: 100%;
 }
@@ -57,30 +54,21 @@ article {
 #chartBorder{
     border: 0.2em solid #c0c0c0;
     max-width:70%;
-    margin: auto;
-    margin-top: 90px;
-    padding-top: 0px;
+    margin: 90px auto;
+    padding-top: 0;
 }
-
 
 #recommendationsBorder{
     border: 0.2em solid #c0c0c0;
     max-width:70%;
-    margin: auto;
-    margin-top: 20px;
+    margin: 20px auto;
     margin-bottom: 80px;
 }
 
 #recommendationsBorder:after {
     content: "";
     display: block;
-    margin-bottom: 20px;
-}
-
-#recommendations {
-    margin: auto;
-    margin-bottom: 10%;
-    width: 70%;
+    margin-bottom:20px;
 }
 
 #contentForRecommendations {
@@ -91,7 +79,7 @@ article {
 }
 
 footer {
-    background-color: #00c95b;
+    background-color: #c0c0c0;
     text-align: center;
     padding: 10px;
     position: fixed;
