@@ -8,6 +8,12 @@ const options = {
     chart: {
         type: 'donut',
     },
+    dataLabels: {
+        enabled: false,
+    },
+    style: {
+        fontSize: '0px',
+    },
     responsive: [
         {
             breakpoint: 480,
@@ -26,11 +32,6 @@ const options = {
 /**
  * <p>function checks to see if user results are found within browser storage, if not then the database is checked for
  * results using logged in account. if no results are found user is redirected to questionnaire to complete</p>
- * @return {promise} response from getResults api call
- * <p>200 response with the user's saved results returned in the body.</p>
- * <p>401 response if the user is not logged in.</p>
- * <p>404 response If the user has not got any answer's stored.</p>
- * <p>500 response if an unknown error occurs.</p>
  */
 function checkResults() {
     const results = JSON.parse(window.localStorage.getItem('ecocalculator.results'));
@@ -55,7 +56,6 @@ function checkResults() {
 /**
  * <p>Function takes the user results and uses them to generate pie chart and recommendations</p>
  * @param {object} results
- * @return {void} no response
  */
 function displayResults(results) {
     generateChart(results);
@@ -66,7 +66,6 @@ function displayResults(results) {
  * <p>Function displays recommendations based on user results by looping through suggestions and adding each to new
  * list item within webpage</p>
  * @param {object} results
- * @return {void} no response
  */
 function displayRecommendations(results) {
     let recommendationsList = ``;
@@ -80,7 +79,6 @@ function displayRecommendations(results) {
  * <p>Function takes results and generates pie chart by looping through the category values and adding each score and
  * category to the pie chart options. Chart is then generated and displayed on webpage </p>
  * @param {object} results
- * @return {void}
  */
 function generateChart(results) {
     for (let i = 0; i < results.categoryValues.length; i++) {

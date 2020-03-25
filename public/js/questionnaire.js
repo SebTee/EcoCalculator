@@ -1,8 +1,5 @@
 /**
  * <p>Function fetches questions from the backend database and generates a questionnaire on the html page dynamically</p>
- * @return {promise} getQuestions api call response
- * <p>200 response with all questions returned as JSON in body.</p>
- * <p>500 response if an unknown error occurs.</p>
  */
 function getQuestions() {
     fetch('/api/v1/question')
@@ -35,10 +32,6 @@ function getQuestions() {
 /**
  * <p>Function loops through all drop down boxes (questionnaire answers) and formats into submit api request object
  * which is then sent to backend. if user is logged in answers are saved to database</p>
- * @return {promise} submit answers api call response
- * <p>200 response with the user's results returned in the body.</p>
- * <p>400 response If the request body is in an invalid format.</p>
- * <p>500 response if an unknown error occurs.</p>
  */
 function submitAnswers() {
 

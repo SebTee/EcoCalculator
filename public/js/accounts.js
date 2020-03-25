@@ -1,11 +1,6 @@
 /**
  * <p>Function checks if passwords match and creates new account using create Account api call and
  * inputted details from html page</p>
- * @return {promise} response of create account api call
- * <p>201 response if user is successfully created an account.</p>
- * <p>400 response if the body is invalid.</p>
- * <p>409 response if the email address is already used for an account.</p>
- * <p>500 response if an unknown error occurs.</p>
  */
 function createAccount() {
     /**
@@ -59,11 +54,6 @@ function createAccount() {
 
 /**
  * <p>Login user using login api call and user inputted email and password on html page</p>
- * @return {promise} response of login api call
- * <p>200 response if user is successfully logged in.</p>
- * <p>400 response if the body is invalid.</p>
- * <p>401 response if the password is incorrect.</p>
- * <p>404 response if the email address supplied in the request does not correspond with.</p>
  */
 
 function login() {
@@ -89,9 +79,7 @@ function login() {
 
 /**
  * Function changes the value of the html error display element to match the error
- * @param {string} errorMessage
- * @return {void} no response
- */
+*/
 function displayError(errorMessage) {
     document.getElementById('errorDisplay').innerText = errorMessage;
 }

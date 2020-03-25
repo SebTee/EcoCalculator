@@ -6,6 +6,7 @@ body {
     overflow-x: hidden;
     height: 100%;
     width: 100%;
+    background-color: #ebfff4;
 }
 
 .logo {
@@ -69,7 +70,7 @@ input:hover {
     width: 100%;
     top: 0;
     overflow: hidden;
-    background-color:#c0c0c0;
+    background-color: #00c95b;
     position: -webkit-sticky;
     position: fixed;
     z-index: 9;
@@ -127,12 +128,12 @@ button:hover{
 /* Navigation END */
 
 /* Footer */
-#footerContainer{
+#footerContainer {
     position: relative;
     width: 100%;
     padding-top: 1em;
-    background-color: #c0c0c0;
     text-align: center;
     height: 3em;
     bottom: 0;
+    background-color: #00c95b;
 }

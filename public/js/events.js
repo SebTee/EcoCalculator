@@ -40,10 +40,6 @@ function hideForm() {
 /**
  * <p>Function checks database for user events and displays them within html element for viewing, dynamically generates
  * each event with classes and a remove button to allow user to also delete the event</p>
- * @return {promise} response of getEvents api call
- * <p>200 response with the list of events the user has saved in the database</p>
- * <p>401 response if the user is not logged in.</p>
- * <p>500 response if an unknown error occurs.</p>
  */
 
 function getEvents() {
@@ -71,13 +67,6 @@ function getEvents() {
 /**
  * <p>Function takes the event Id and deletes respective event from the database then refreshes the events in html by
  * calling getEvents at the end</p>
- * @param {string} event id
- * @return {promise} response of delete event api call
- * <p>200 response if the event is successfully deleted from the database.</p>
- * <p>400 response if the request query is in an invalid format</p>
- * <p>404 response if the supplied event ID does not correspond with an event associated with the logged in user.</p>
- * <p>401 response if the user is not logged in.</p>
- * <p>500 response if an unknown error occurs.</p>
  */
 
 function deleteEvent(id) {
@@ -95,16 +84,13 @@ function deleteEvent(id) {
             .then(getEvents())
     }
 
+    getEvents()
+
 }
 
 /**
  * <p>function takes event values from user input form and submits them to database using submit event api call. end date is
  * calculated by adding duration onto the start date </p>
- * @return {promise} response of addEvent api call
- * <p>201 response if the event is successfully added to the database.</p>
- * <p>400 response if the request body is in an invalid format. End is before start if the end date is before the start date.</p>
- * <p>401 response if the user is not logged in.</p>
- * <p>500 response if an unknown error occurs.</p>
  */
 function submitEvent() {
 
@@ -132,17 +118,47 @@ function submitEvent() {
      */
     let end = new Date(start.getTime() + (duration * 24 * 60 * 60 * 1000));
 
-    fetch('/api/v1/event', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name,
-            start,
-            end
+    if (duration == '' || duration <= 0 || !Date.parse(document.getElementById('startDate').value)) {
+        showErrorMessage();
+    } else {
+        fetch('/api/v1/event', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                start,
+                end
+            })
+        }).then(function () {
+            resetInput();
+            hideErrorMessage();
+            getEvents();
         })
-    }).then(function () {
-        getEvents()
-    })
+    }
+
+
+}
+
+function resetInput() {
+    document.getElementById('eventSelect').value = '';
+    document.getElementById('startDate').value = '';
+    document.getElementById('duration').value = '';
+}
+
+/**
+ * Function displays error message if user has not inputted valid details for the event
+ */
+function showErrorMessage() {
+    let message = document.getElementById('errorMessage');
+    message.style.display = 'block';
+}
+
+/**
+ * Function hides error message if user has inputted valid details for the event
+ */
+function hideErrorMessage() {
+    let message = document.getElementById('errorMessage');
+    message.style.display = 'none';
 }
