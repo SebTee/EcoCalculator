@@ -55,9 +55,15 @@ function submitAnswers() {
             response
         )
     }).then(res => {
-        res.json().then(json => {
-            window.localStorage.setItem('ecocalculator.results', JSON.stringify(json));
-            window.location.assign('./results.html');
-        });
+        if (res.status === 200) {
+            res.json().then(json => {
+                window.localStorage.setItem('ecocalculator.results', JSON.stringify(json));
+                window.location.assign('./results.html');
+            });
+        } else {
+            const errorDisplay = document.getElementById('errorDisplay');
+            errorDisplay.innerText = "Please answer all of the questions";
+            errorDisplay.style.margin = "1em 0 1em 0";
+        }
     })
 }

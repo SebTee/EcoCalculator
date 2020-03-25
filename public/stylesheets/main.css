@@ -143,3 +143,9 @@ button:hover{
     bottom: 0;
     background-color: #00c95b;
 }
+
+#errorDisplay {
+    color: #ff0000;
+    text-align: center;
+    font-weight: bold;
+}
