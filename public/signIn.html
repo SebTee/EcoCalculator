@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="919736192879-n4pddoettncd3p3g7ieeg27haasv2ich.apps.googleusercontent.com.apps.googleusercontent.com">
     <script src="./js/accounts.js"></script>
     <title>Sign In</title>
     <link rel="stylesheet" href="./stylesheets/main.css">
@@ -13,7 +15,7 @@
         <h1 id="heading2">Sign In</h1>
     </header>
 
-    <section>
+    <section id="signIn">
         <form>
             <div id="errorDisplay"></div>
             <input id="email" type="email" class="textbox" name="email" placeholder="Email">
@@ -23,6 +25,10 @@
         <button id = "logInBtn" onclick="login();" type="button">Log In </button>
         <button onclick="window.location.href = './createAccount.html';" type="button">Need an Account?
         </button>
+
+<!--        <div class="g-signin" data-onsuccess="onSignIn">-->
+<!--            <img src="images/btn_google.png" alt="">-->
+<!--        </div>-->
     </section>
 </body>
 </html>
