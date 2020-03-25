@@ -62,16 +62,20 @@ function displayResults(results) {
  * @param {object} results
  */
 function displayRecommendations(results) {
-    let recommendationsList = ``;
-    for (let i = 0; i < results.suggestions.length; i++) {
-        recommendationsList += `<li class="suggestions">${results.suggestions[i].suggestion}</li>`
-    }
-    document.getElementById('recommendationsList').innerHTML = recommendationsList;
+	if (results.suggestions.length === 0) {
+		document.getElementById('recommendationsContainer').style.display = "none";
+	} else {
+		let recommendationsList = ``;
+		for (let i = 0; i < results.suggestions.length; i++) {
+			recommendationsList += `<li class="suggestions">${results.suggestions[i].suggestion}</li>`
+		}
+		document.getElementById('recommendationsList').innerHTML = recommendationsList;
+	}
 }
 
 /**
  * <p>Function takes results and generates pie chart by looping through the category values and adding each score and
- * category to the pie chart options. Chart is then generated and displayed on webpage </p>
+ * category to the pie chart options. Chart is then generated and displayed on web page </p>
  * @param {object} results
  */
 function generateChart(results) {
