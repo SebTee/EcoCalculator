@@ -99,3 +99,9 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#total {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+}

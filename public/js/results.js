@@ -1,4 +1,11 @@
 /**
+ * For every 60 points, if everyone lived like this person that's how man earths would be needed to support that lifestyle.
+ * e.g. 120 points means that if everyone lived like this person 2 earths would be needed to support life.
+ * @type {number}
+ */
+const pointsPerEarth = 60;
+
+/**
  * Sets the options for the pie chart.
  * @type {Object}
  */
@@ -54,16 +61,17 @@ function checkResults() {
 function displayResults(results) {
     generateChart(results);
     displayRecommendations(results);
+    showTotalInterpretation(results)
 }
 
 /**
  * <p>Function displays recommendations based on user results by looping through suggestions and adding each to new
- * list item within webpage</p>
+ * list item within web page</p>
  * @param {object} results
  */
 function displayRecommendations(results) {
 	if (results.suggestions.length === 0) {
-		document.getElementById('recommendationsContainer').style.display = "none";
+		document.getElementById('recommendationsContainer').innerHTML = "";
 	} else {
 		let recommendationsList = ``;
 		for (let i = 0; i < results.suggestions.length; i++) {
@@ -85,6 +93,30 @@ function generateChart(results) {
     }
     const chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
+}
+
+/**
+ * Displays to the user how many earths are needed to support their lifestyle.
+ * The colour of the text changes from green to red based on how bad the score is.
+ * @param {object} results
+ */
+function showTotalInterpretation(results) {
+    const maxRedScore = 2 * pointsPerEarth;
+    let red, green;
+    if (results.score <= pointsPerEarth) {
+        red = 0;
+        green = 255;
+    } else if (results.score >= maxRedScore) {
+        red = 255;
+        green = 0;
+    } else {
+        red = Math.round(255 * ((results.score - pointsPerEarth) / (maxRedScore - pointsPerEarth)));
+        green = 255 - red;
+    }
+    const totalDisplay = document.getElementById("total");
+    totalDisplay.style.color = "rgb(" + red + "," + green + ",0)";
+    const numberOfEarths = Math.round((results.score / pointsPerEarth + Number.EPSILON) * 100) / 100;
+    totalDisplay.innerText = `If everyone lived like you we would need ${numberOfEarths} earth(s) to survive.`;
 }
 
 window.onload = checkResults;
