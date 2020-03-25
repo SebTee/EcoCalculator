@@ -37,6 +37,7 @@ function hideForm() {
     form.style.display = 'none';
 }
 
+
 /**
  * <p>Function checks database for user events and displays them within html element for viewing, dynamically generates
  * each event with classes and a remove button to allow user to also delete the event</p>
@@ -70,22 +71,19 @@ function getEvents() {
  */
 
 function deleteEvent(id) {
-
     //Delete event and content by id
     let selectedEvent = document.getElementById(id);
     selectedEvent.innerHTML = "";
     selectedEvent.id = '';
 
-    if (window.confirm('Are you Sure?')) {
+    if (window.confirm('Are you sure you want to delete this event?')) {
         fetch('/api/v1/event/?id=' + id, {
             method: 'DELETE',
         })
             .then(res => console.log(res))
             .then(getEvents())
     }
-
     getEvents()
-
 }
 
 /**
@@ -131,10 +129,20 @@ function submitEvent() {
                 start,
                 end
             })
-        }).then(function () {
-            resetInput();
-            hideErrorMessage();
-            getEvents();
+        }).then(res => {
+            if (!res.ok) {
+                console.log(res);
+                document.getElementById('errorMessage').innerHTML =
+                    'You can only add events if you are logged in!';
+                showErrorMessage();
+            } else {
+                resetInput();
+                document.getElementById('errorMessage').innerHTML =
+                    'Check all fields are filled out correctly and try again';
+                hideErrorMessage();
+                getEvents();
+            }
+
         })
     }
 
