@@ -8,12 +8,6 @@ const options = {
     chart: {
         type: 'donut',
     },
-    dataLabels: {
-        enabled: false,
-    },
-    style: {
-        fontSize: '0px',
-    },
     responsive: [
         {
             breakpoint: 480,
