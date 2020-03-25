@@ -128,7 +128,7 @@ button:hover{
 
 /* Footer */
 #footerContainer{
-    position: absolute;
+    position: relative;
     width: 100%;
     padding-top: 1em;
     background-color: #c0c0c0;
