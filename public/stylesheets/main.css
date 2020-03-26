@@ -30,8 +30,24 @@ body {
     text-align: center;
 }
 
+h3 {
+    font-size: medium;
+}
+
 h4 {
     text-align: center;
+}
+
+#errorDisplay {
+    color: #ff0000;
+    text-align: center;
+    font-weight: bold;
+}
+
+.termsContainer {
+    margin: 5em;
+    padding: 0.5em;
+    background-color: silver;
 }
 
 /*Textbox padding for createAccount and signIn page*/
@@ -144,8 +160,3 @@ button:hover{
     background-color: #00c95b;
 }
 
-#errorDisplay {
-    color: #ff0000;
-    text-align: center;
-    font-weight: bold;
-}

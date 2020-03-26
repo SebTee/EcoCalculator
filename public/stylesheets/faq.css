@@ -1,19 +1,14 @@
 
 .faqContainer {
-    position: center;
-    margin: 2em auto;
-    padding-top: 2em;
-    background-color: #8e908c;
-    width: 60%;
+    margin: 5em 8em;
+    height: auto;
+    background-color: silver;
 }
 
 .faqTitle {
     list-style: none;
-    margin: 0;
     text-align: center;
     font-size: 2em;
-    padding: 1em;
-    position: center;
     font-weight: bold;
 }
 
@@ -22,14 +17,12 @@
 }
 
 .faqItems {
-    list-style: none;
-    position: relative;
     height: 100%;
     width: 90%;
+    vertical-align: middle;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     backface-visibility: hidden;
-    z-index: 1;
 }
 
 .faqGroup {
