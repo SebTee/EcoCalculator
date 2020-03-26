@@ -9,7 +9,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh 'npm test',
+                sh 'psql -d ecocalculator -f ./database/deleteDB.sql',
+                sh 'psql -d ecocalculator -f ./database/createDB.sql'
             }
         }
         stage('Build') {
