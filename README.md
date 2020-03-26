@@ -12,7 +12,7 @@ jsdoc -c ./jsDocConf.json *
 
 ## Setup
 
-Download and install the latest version of [postgres database](https://www.postgresql.org/download/) for your platform.
+Download and install the latest version of [postgres database](https://www.postgresql.org/download/) for your platform as well as [NodeJS](https://nodejs.org/) and [NPM](https://www.npmjs.com/).
 
 Once installed log into the postgres command line interface as a super user and run the following commands:
 ```postgresql

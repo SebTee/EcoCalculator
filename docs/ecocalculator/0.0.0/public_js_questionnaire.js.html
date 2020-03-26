@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: routes/api.js</title>
+    <title>JSDoc: Source: public/js/questionnaire.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: routes/api.js</h1>
+    <h1 class="page-title">Source: public/js/questionnaire.js</h1>
 
     
 
@@ -26,51 +26,75 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const express = require('express');
-const account = require('../account');
-const question = require('../question');
-const result = require('../result');
-const event = require('../event');
+            <pre class="prettyprint source linenums"><code>/**
+ * &lt;p>Function fetches questions from the backend database and generates a questionnaire on the html page dynamically&lt;/p>
+ */
+function getQuestions() {
+    fetch('/api/v1/question')
+        .then(res => res.json())
+        .then((data) => {
+            // output will contain all questions./answers fetched from db
+
+            let output = '';
+
+            //initial loop to go through each question
+            data.questions.forEach(question => {
+
+                output += `&lt;p class='question'>${question.question}&lt;/p>`;
+                output += `&lt;select id='${question.questionId}' class='selectBox'>`;
+                output += `&lt;option class='dropdown' value='-1'>-&lt;/option>`;
+
+                //nested loop to go through answers for each question
+
+                question.answers.forEach(answer => {
+                    output += `&lt;option class='dropdown' value='${answer.answerId}'>${answer.answer}&lt;/option>`
+                });
+
+                output += `&lt;/select>`
+            });
+            document.getElementById('dbQuestions').innerHTML = output;
+
+        })
+}
 
 /**
- * Routes for the API
- * @type {Router}
+ * &lt;p>Function loops through all drop down boxes (questionnaire answers) and formats into submit api request object
+ * which is then sent to backend. if user is logged in answers are saved to database&lt;/p>
  */
-const apiRouter = express.Router();
+function submitAnswers() {
 
-apiRouter.post('/account/create', (req, res, next) => {
-  account.create(req, res);
-});
+    let allAnswers = document.getElementsByClassName('selectBox');
 
-apiRouter.post('/account/login', (req, res, next) => {
-  account.login(req, res);
-});
+    let response = {"answers": []};
 
-apiRouter.get('/question', (req, res, next) => {
-  question.get(req, res);
-});
+    for (i = 0; i &lt; allAnswers.length; i++) {
+        response.answers.push({
+            "questionId": Number(allAnswers[i].id),
+            "answerId": Number(allAnswers[i].value)
+        });
+    }
 
-apiRouter.post('/question', (req, res, next) => {
-  result.submit(req, res);
-});
-
-apiRouter.get('/result', (req, res, next) => {
-  result.getResult(req, res);
-});
-
-apiRouter.post('/event', (req, res, next) => {
-  event.addEvent(req, res);
-});
-
-apiRouter.get('/event', (req, res, next) => {
-  event.getEvents(req, res);
-});
-
-apiRouter.delete('/event', (req, res, next) => {
-  event.deleteEvent(req, res);
-});
-
-module.exports = apiRouter;
+    fetch('/api/v1/question', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+            response
+        )
+    }).then(res => {
+        if (res.status === 200) {
+            res.json().then(json => {
+                window.localStorage.setItem('ecocalculator.results', JSON.stringify(json));
+                window.location.assign('./results.html');
+            });
+        } else {
+            const errorDisplay = document.getElementById('errorDisplay');
+            errorDisplay.innerText = "Please answer all of the questions";
+            errorDisplay.style.margin = "1em 0 1em 0";
+        }
+    })
+}
 </code></pre>
         </article>
     </section>
