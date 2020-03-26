@@ -7,7 +7,7 @@
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
-      <fscript src="//html5shiv.googlecode.com/svn/trunk/html5.js"></fscript>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
@@ -48,9 +48,34 @@
 <p><a href="https://sebtee.com/eco/">Test Server</a></p>
 <h2><a href="https://sebtee.github.io/EcoCalculator/ecocalculator/0.0.0/">Documentation</a></h2>
 <p>generate documentation command to run in project root file</p>
-<pre class="prettyprint source lang-bash"><code>jsdoc -c ./jsDocConf.json *
+<pre class="prettyprint source lang-shell"><code>jsdoc -c ./jsDocConf.json *
 </code></pre>
-<h3>Legend</h3>
+<h2>Setup</h2>
+<p>Download and install the latest version of <a href="https://www.postgresql.org/download/">postgres database</a> for your platform as well as <a href="https://nodejs.org/">NodeJS</a> and <a href="https://www.npmjs.com/">NPM</a>.</p>
+<p>Once installed log into the postgres command line interface as a super user and run the following commands:</p>
+<pre class="prettyprint source lang-postgresql"><code>CREATE DATABASE ecocalculator;
+CREATE USER ecocalculator WITH PASSWORD 'ecocalculator';
+</code></pre>
+<p>In a terminal session run the following commands:</p>
+<pre class="prettyprint source lang-shell"><code>git clone https://github.com/SebTee/EcoCalculator.git
+cd EcoCalculator
+npm install
+</code></pre>
+<p>This Downloads the source code and installs the dependencies.</p>
+<p>If you are using a unix based operating system like Linux or MacOS you can run the following command to construct and populate the database:</p>
+<pre class="prettyprint source lang-shell"><code>psql -d ecocalculator -f ./database/createDB.sql
+</code></pre>
+<p>Otherwise you will have to log back into the Postgres command line interface and run the following commands:</p>
+<pre class="prettyprint source lang-postgresql"><code>\c ecocalculator
+\i [absolute path to createDB.sql]
+</code></pre>
+<p>Replace <code>[absolute path to createDB.sql]</code> with the absolute path to <code>createDB.sql</code>. The file is found relative to the project root at <code>./database/createDB.sql</code>.</p>
+<p>Once this is done navigate to the project root in a terminal session and run this command to start the server:</p>
+<pre class="prettyprint source lang-shell"><code>npm start
+</code></pre>
+<p>You should now be able to see the web app at <code>http://localhost:3000</code> in a browser on the same machine that's running the server.
+If you want to access it on another device you need to know the host machine's public IP address. You can access it at <code>http://[IPaddress]:3000</code>.</p>
+<h2>GitHub users</h2>
 <ul>
 <li>
 <p><a href="https://github.com/AhmadKhuzaei">AhmadKhuzaei</a> - Ahmad Al-khuzaei (up879591)</p>
@@ -78,13 +103,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#apiRouter">apiRouter</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#deleteEvent">deleteEvent</a></li><li><a href="global.html#emailRegularExpression">emailRegularExpression</a></li><li><a href="global.html#generateResults">generateResults</a></li><li><a href="global.html#getEvents">getEvents</a></li><li><a href="global.html#getQuestions">getQuestions</a></li><li><a href="global.html#getQuestionsAsJson">getQuestionsAsJson</a></li><li><a href="global.html#getResults">getResults</a></li><li><a href="global.html#isBodyValid">isBodyValid</a></li><li><a href="global.html#isLoggedIn">isLoggedIn</a></li><li><a href="global.html#isQuestionAnswered">isQuestionAnswered</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#storeResults">storeResults</a></li><li><a href="global.html#submit">submit</a></li><li><a href="global.html#validEmail">validEmail</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#apiRouter">apiRouter</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#checkResults">checkResults</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#deleteEvent">deleteEvent</a></li><li><a href="global.html#displayError">displayError</a></li><li><a href="global.html#displayRecommendations">displayRecommendations</a></li><li><a href="global.html#displayResults">displayResults</a></li><li><a href="global.html#emailRegularExpression">emailRegularExpression</a></li><li><a href="global.html#generateChart">generateChart</a></li><li><a href="global.html#generateResults">generateResults</a></li><li><a href="global.html#getEvents">getEvents</a></li><li><a href="global.html#getQuestions">getQuestions</a></li><li><a href="global.html#getQuestionsAsJson">getQuestionsAsJson</a></li><li><a href="global.html#getResults">getResults</a></li><li><a href="global.html#hideErrorMessage">hideErrorMessage</a></li><li><a href="global.html#hideForm">hideForm</a></li><li><a href="global.html#isBodyValid">isBodyValid</a></li><li><a href="global.html#isLoggedIn">isLoggedIn</a></li><li><a href="global.html#isQuestionAnswered">isQuestionAnswered</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#onSignIn">onSignIn</a></li><li><a href="global.html#options">options</a></li><li><a href="global.html#pointsPerEarth">pointsPerEarth</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#showErrorMessage">showErrorMessage</a></li><li><a href="global.html#showForm">showForm</a></li><li><a href="global.html#showTotalInterpretation">showTotalInterpretation</a></li><li><a href="global.html#storeResults">storeResults</a></li><li><a href="global.html#submit">submit</a></li><li><a href="global.html#submitAnswers">submitAnswers</a></li><li><a href="global.html#submitEvent">submitEvent</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#validEmail">validEmail</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Mar 23 2020 14:30:15 GMT+0000 (Greenwich Mean Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 26 2020 11:18:55 GMT+0000 (Greenwich Mean Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: public/js/events.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: public/js/events.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * &lt;p>Function creates new date and changes html elements to match date properties and assigns a class to current
+ * day to change html appearance&lt;/p>
+ */
+function update() {
+
+    getEvents();
+
+    let n = new Date();
+
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+        'November', 'December'];
+
+    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    const monthName = months[n.getMonth()];
+    const day = n.getDay() + 1;
+
+    document.getElementById("month").innerHTML = monthName;
+    document.getElementById("date").innerHTML = 'Today - ' + n.toDateString();
+    document.getElementById(days[day - 1]).className += 'today';
+}
+
+/**
+ *&lt;p>Function shows add events form by changing its css display value&lt;/p>
+ */
+function showForm() {
+    let form = document.getElementById('eventForm');
+    form.style.display = 'block';
+}
+
+/**
+ *&lt;p>Function hides add events form by changing its css display value&lt;/p>
+ */
+function hideForm() {
+    let form = document.getElementById('eventForm');
+    form.style.display = 'none';
+}
+
+
+/**
+ * &lt;p>Function checks database for user events and displays them within html element for viewing, dynamically generates
+ * each event with classes and a remove button to allow user to also delete the event&lt;/p>
+ */
+
+function getEvents() {
+    fetch('/api/v1/event')
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data);
+
+            let output = '';
+
+            data.events.forEach(events => {
+
+                let startDate = new Date(events.start);
+                let endDate = new Date(events.end);
+                let startFormat = startDate.getDate() + '-' + (startDate.getMonth() + 1) + '-' + startDate.getFullYear();
+                let endFormat = endDate.getDate() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getFullYear();
+
+                output += ` &lt;div id="${events.id}" class="singleEvent">&lt;p class="eventInfo">${events.name} From:  ${startFormat} to ${endFormat}&lt;/p>&lt;button class="deleteButtons" onclick="deleteEvent(${events.id})">X&lt;/button>&lt;/div>`
+            });
+            document.getElementById('dayEvents').innerHTML = output;
+        })
+}
+
+
+/**
+ * &lt;p>Function takes the event Id and deletes respective event from the database then refreshes the events in html by
+ * calling getEvents at the end&lt;/p>
+ */
+
+function deleteEvent(id) {
+    //Delete event and content by id
+    let selectedEvent = document.getElementById(id);
+    selectedEvent.innerHTML = "";
+    selectedEvent.id = '';
+
+    if (window.confirm('Are you sure you want to delete this event?')) {
+        fetch('/api/v1/event/?id=' + id, {
+            method: 'DELETE',
+        })
+            .then(res => console.log(res))
+            .then(getEvents())
+    }
+    getEvents()
+}
+
+/**
+ * &lt;p>function takes event values from user input form and submits them to database using submit event api call. end date is
+ * calculated by adding duration onto the start date &lt;/p>
+ */
+function submitEvent() {
+
+    /**
+     * Event name
+     * @type {string}
+     */
+    let name = document.getElementById('eventSelect').value;
+
+    /**
+     * Event start date
+     * @type {Date}
+     */
+    let start = new Date(document.getElementById('startDate').value);
+
+    /**
+     * Event duration
+     * @type {number}
+     */
+    let duration = Number(document.getElementById('duration').value);
+
+    /**
+     * Event end date
+     * @type {Date}
+     */
+    let end = new Date(start.getTime() + (duration * 24 * 60 * 60 * 1000));
+
+    if (duration == '' || duration &lt;= 0 || !Date.parse(document.getElementById('startDate').value)) {
+        showErrorMessage();
+    } else {
+        fetch('/api/v1/event', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                start,
+                end
+            })
+        }).then(res => {
+            if (!res.ok) {
+                console.log(res);
+                document.getElementById('errorMessage').innerHTML =
+                    'You can only add events if you are logged in!';
+                showErrorMessage();
+            } else {
+                resetInput();
+                document.getElementById('errorMessage').innerHTML =
+                    'Check all fields are filled out correctly and try again';
+                hideErrorMessage();
+                getEvents();
+            }
+
+        })
+    }
+
+
+}
+
+function resetInput() {
+    document.getElementById('eventSelect').value = '';
+    document.getElementById('startDate').value = '';
+    document.getElementById('duration').value = '';
+}
+
+/**
+ * Function displays error message if user has not inputted valid details for the event
+ */
+function showErrorMessage() {
+    let message = document.getElementById('errorMessage');
+    message.style.display = 'block';
+}
+
+/**
+ * Function hides error message if user has inputted valid details for the event
+ */
+function hideErrorMessage() {
+    let message = document.getElementById('errorMessage');
+    message.style.display = 'none';
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#apiRouter">apiRouter</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#checkResults">checkResults</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#deleteEvent">deleteEvent</a></li><li><a href="global.html#displayError">displayError</a></li><li><a href="global.html#displayRecommendations">displayRecommendations</a></li><li><a href="global.html#displayResults">displayResults</a></li><li><a href="global.html#emailRegularExpression">emailRegularExpression</a></li><li><a href="global.html#generateChart">generateChart</a></li><li><a href="global.html#generateResults">generateResults</a></li><li><a href="global.html#getEvents">getEvents</a></li><li><a href="global.html#getQuestions">getQuestions</a></li><li><a href="global.html#getQuestionsAsJson">getQuestionsAsJson</a></li><li><a href="global.html#getResults">getResults</a></li><li><a href="global.html#hideErrorMessage">hideErrorMessage</a></li><li><a href="global.html#hideForm">hideForm</a></li><li><a href="global.html#isBodyValid">isBodyValid</a></li><li><a href="global.html#isLoggedIn">isLoggedIn</a></li><li><a href="global.html#isQuestionAnswered">isQuestionAnswered</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#onSignIn">onSignIn</a></li><li><a href="global.html#options">options</a></li><li><a href="global.html#pointsPerEarth">pointsPerEarth</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#showErrorMessage">showErrorMessage</a></li><li><a href="global.html#showForm">showForm</a></li><li><a href="global.html#showTotalInterpretation">showTotalInterpretation</a></li><li><a href="global.html#storeResults">storeResults</a></li><li><a href="global.html#submit">submit</a></li><li><a href="global.html#submitAnswers">submitAnswers</a></li><li><a href="global.html#submitEvent">submitEvent</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#validEmail">validEmail</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 26 2020 11:18:55 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
