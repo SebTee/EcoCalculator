@@ -116,7 +116,7 @@ function submitEvent() {
      */
     let end = new Date(start.getTime() + (duration * 24 * 60 * 60 * 1000));
 
-    if (duration == '' || duration <= 0 || !Date.parse(document.getElementById('startDate').value)) {
+    if (name == '' || duration == '' || duration <= 0 || !Date.parse(document.getElementById('startDate').value)) {
         showErrorMessage();
     } else {
         fetch('/api/v1/event', {
