@@ -35,14 +35,14 @@ const options = {
  * results using logged in account. if no results are found user is redirected to questionnaire to complete</p>
  */
 function checkResults() {
-    const results = JSON.parse(window.localStorage.getItem('ecocalculator.results'));
+    let results = JSON.parse(window.localStorage.getItem('ecocalculator.results'));
     if (results === null) {
-        fetch('/api/v1/results')
+        fetch('/api/v1/result')
             .then(res => {
                 if (res.status === 200) {
                     res.json().then(json => {
                         window.localStorage.setItem('ecocalculator.results', JSON.stringify(json));
-                        const results = window.localStorage.getItem('ecocalculator.results');
+                        results = JSON.parse(window.localStorage.getItem('ecocalculator.results'));
                         displayResults(results);
                     })
                 } else {

@@ -54,7 +54,7 @@ function login() {
         })
     }).then(res => {
         if (res.status === 200) {
-            window.location.assign('./questionnaire.html')
+            window.location.assign('./results.html')
         } else {
             displayError("Incorrect username or password.")
         }
@@ -66,19 +66,4 @@ function login() {
 */
 function displayError(errorMessage) {
     document.getElementById('errorDisplay').innerText = errorMessage;
-}
-
-/**
- * Function takes a google user and uses respective email and password to login
- * @param {object} googleUser
- */
-function onSignIn(googleUser) {
-    // Useful data for your client-side scripts:
-    let profile = googleUser.getBasicProfile();
-    console.log("Email: " + profile.getEmail()); // Don't send this directly to your server!
-    console.log('Password: ' + profile.g());
-
-    // The ID token you need to pass to your backend:
-    let id_token = googleUser.getAuthResponse().id_token;
-    console.log("ID Token: " + id_token);
 }
